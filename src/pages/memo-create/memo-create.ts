@@ -3,7 +3,10 @@ import { Memo } from './../../models/memo/memo.interface';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+  name: 'MemoCreatePage',
+  segment: 'memo/create'
+})
 @Component({
   selector: 'page-memo-create',
   templateUrl: 'memo-create.html',

@@ -20,6 +20,11 @@ import { MemoManagerProvider } from './../providers/memo-manager/memo-manager';
 
 import { MyApp } from './app.component';
 import { AuthManagerProvider } from '../providers/auth-manager/auth-manager';
+import { FriendListPageModule } from '../pages/friend-list/friend-list.module';
+import { ChattingListPageModule } from '../pages/chatting-list/chatting-list.module';
+import { MainNavigationPageModule } from '../pages/main-navigation/main-navigation.module';
+import { PipesModule } from '../pipes/pipes.module';
+import { ProfilePageModule } from '../pages/profile/profile.module';
 
 
 export const firebaseConfig = {
@@ -48,7 +53,12 @@ export const firebaseConfig = {
     MemoDetailPageModule,
     MemoListPageModule,
     SignInPageModule,
-    SignUpPageModule
+    SignUpPageModule,
+    FriendListPageModule,
+    ChattingListPageModule,
+    MainNavigationPageModule,
+    ProfilePageModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

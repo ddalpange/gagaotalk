@@ -8,7 +8,10 @@ import { MemoDetailPage } from './../memo-detail/memo-detail';
 
 import { AuthManagerProvider } from './../../providers/auth-manager/auth-manager';
 import { MemoManagerProvider } from './../../providers/memo-manager/memo-manager';
-@IonicPage()
+@IonicPage({
+  name: 'MemoListPage',
+  segment: 'memo/list'
+})
 
 @Component({
   selector: 'page-memo-list',

@@ -6,6 +6,7 @@ import { AuthManagerProvider } from './../providers/auth-manager/auth-manager';
 
 import { SignInPage } from './../pages/sign-in/sign-in';
 import { MemoListPage } from './../pages/memo-list/memo-list';
+import { MainNavigationPage } from '../pages/main-navigation/main-navigation';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,7 +29,7 @@ export class MyApp {
     });
     authManager.getAuthState().subscribe((user => {
       if(user)
-        this.rootPage = MemoListPage;
+        this.rootPage = MainNavigationPage;
       else 
         this.rootPage = SignInPage;
     }));

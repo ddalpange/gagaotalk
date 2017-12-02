@@ -4,7 +4,10 @@ import { Memo } from './../../models/memo/memo.interface';
 import { MemoCreatePage } from './../memo-create/memo-create';
 import { MemoManagerProvider } from './../../providers/memo-manager/memo-manager';
 
-@IonicPage()
+@IonicPage({
+  name: 'MemoDetailPage',
+  segment: 'memo/detail',
+})
 @Component({
   selector: 'page-memo-detail',
   templateUrl: 'memo-detail.html',

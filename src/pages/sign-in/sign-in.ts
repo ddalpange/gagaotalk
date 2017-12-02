@@ -5,7 +5,10 @@ import { SignUpPage } from './../sign-up/sign-up';
 import { MemoListPage } from './../memo-list/memo-list';
 import { AuthManagerProvider } from '../../providers/auth-manager/auth-manager';
 
-@IonicPage()
+@IonicPage({
+  name: 'SignInPage',
+  segment: 'sign/in'
+})
 @Component({
   selector: 'page-sign-in',
   templateUrl: 'sign-in.html',

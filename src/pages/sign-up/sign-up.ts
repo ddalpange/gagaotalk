@@ -3,7 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthManagerProvider } from '../../providers/auth-manager/auth-manager';
 import { LoadingController, AlertController } from 'ionic-angular';
 
-@IonicPage()
+@IonicPage({
+  name: 'SignUpPage',
+  segment: 'sign/up'
+})
 @Component({
   selector: 'page-sign-up',
   templateUrl: 'sign-up.html',
