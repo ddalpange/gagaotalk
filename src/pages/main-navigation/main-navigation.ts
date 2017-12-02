@@ -11,7 +11,9 @@ import { MemoListPage } from '../memo-list/memo-list';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+@IonicPage({
+  name: 'MainNavigationPage'
+})
 @Component({
   selector: 'page-main-navigation',
   templateUrl: 'main-navigation.html'

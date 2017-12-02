@@ -8,8 +8,6 @@ import { AngularFireModule } from 'angularfire2'; // 파이어베이스 루트 �
 import { AngularFireDatabaseModule } from 'angularfire2/database'; // 파이어베이스 데이터베이스 모듈입니다.
 import { AngularFireAuthModule } from 'angularfire2/auth'; // 파이버베이스 인증 모듈입니다.
 
-import { SignUpPageModule } from './../pages/sign-up/sign-up.module';
-import { SignInPageModule } from './../pages/sign-in/sign-in.module';
 import { MemoListPageModule } from './../pages/memo-list/memo-list.module';
 import { MemoDetailPageModule } from './../pages/memo-detail/memo-detail.module';
 import { MemoCreatePageModule } from './../pages/memo-create/memo-create.module';
@@ -25,6 +23,7 @@ import { ChattingListPageModule } from '../pages/chatting-list/chatting-list.mod
 import { MainNavigationPageModule } from '../pages/main-navigation/main-navigation.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
+import { RegisterPageModule } from '../pages/register/register.module';
 
 
 export const firebaseConfig = {
@@ -52,12 +51,11 @@ export const firebaseConfig = {
     MemoCreatePageModule,
     MemoDetailPageModule,
     MemoListPageModule,
-    SignInPageModule,
-    SignUpPageModule,
     FriendListPageModule,
     ChattingListPageModule,
     MainNavigationPageModule,
     ProfilePageModule,
+    RegisterPageModule,
     PipesModule
   ],
   bootstrap: [IonicApp],

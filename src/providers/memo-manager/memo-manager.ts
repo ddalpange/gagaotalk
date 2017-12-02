@@ -25,7 +25,9 @@ export class MemoManagerProvider {
   }
 
   initMemoList() {
-    this.memoListRef = this.afDB.list(`/memoList/${this.authManager.getUserInfo().uid}`)
+    const userInfo = this.authManager.getUserInfo();
+    if(!userInfo) return;
+    this.memoListRef = this.afDB.list(`/memoList/${userInfo.uid}`)
     this.memoList = this.memoListRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
     })
