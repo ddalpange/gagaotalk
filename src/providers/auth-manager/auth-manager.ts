@@ -47,6 +47,13 @@ export class AuthManagerProvider {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  facebookLogin() {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider());
+  }
+
+  googleLogin() {
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
   signUpUser(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
   }

@@ -6,7 +6,7 @@
   <ion-slides #slider class="content-slider" direction="vertical">
     <ion-slide class="swiper-no-swiping">
       <div padding>
-        <img class="logo" src="assets/img/logo/logo-pr.png" />
+        <img class="logo" src="assets/img/logo/logo-gagaotalk.png" />
         <ion-slides class="text-slider" autoplay="2000">
           <ion-slide>
             <h3> Really nice stuff </h3>
@@ -43,7 +43,9 @@
               <ion-label floating>Password</ion-label>
               <ion-input type="password" [(ngModel)]="password"></ion-input>
             </ion-item>
-            <button ion-button block round (click)="login()" color="light" class="login-button">Login</button>
+            <button ion-button block round icon-start (click)="login()" color="light" class="login-button"><ion-icon name="mail"></ion-icon>Login</button>
+            <button ion-button block round icon-start (click)="facebookLogin()" color="primary" class="login-button"><ion-icon name="logo-facebook"></ion-icon>Login</button>
+            <button ion-button block round icon-start (click)="googleLogin()" color="google" class="login-button"><ion-icon name="logo-google"></ion-icon>Login</button>
             <button ion-button clear (click)="slideNext()" color="light" class="forgot-button">FORGOT PASSWORD?</button>
           </div>
           <button ion-button clear (click)="goToSignup()" class="slide-button position-bottom">GO TO SIGNUP<ion-icon name="arrow-down"></ion-icon></button>

@@ -43,7 +43,8 @@ export const firebaseConfig = {
     HttpModule,
     FormsModule,
     IonicModule.forRoot(MyApp, {
-      backButtonText: '',
+      // backButtonText: '',
+      tabsHideOnSubPages: true
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,

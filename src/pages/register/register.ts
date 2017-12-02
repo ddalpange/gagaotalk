@@ -82,6 +82,46 @@ export class RegisterPage {
       alert.present();
     });;
   }
+
+  facebookLogin() {
+    let loader = this.loadingCtrl.create({
+      content: '로그인 중입니다 ..'
+    });
+
+    loader.present();
+
+    this.authManager.facebookLogin()
+      .then(user => {
+      console.log('성공!', user);
+      loader.dismiss();
+    })
+    .catch(err => { 
+      console.error('실패!', err);
+      loader.dismiss();
+      const alert = this.getAlert('실패', err.message);
+      alert.present();
+    });;
+  };
+
+  googleLogin() {
+    let loader = this.loadingCtrl.create({
+      content: '로그인 중입니다 ..'
+    });
+
+    loader.present();
+
+    this.authManager.googleLogin()
+      .then(user => {
+      console.log('성공!', user);
+      loader.dismiss();
+    })
+    .catch(err => { 
+      console.error('실패!', err);
+      loader.dismiss();
+      const alert = this.getAlert('실패', err.message);
+      alert.present();
+    });;
+  };
   
   resetPassword() {
     let loader = this.loadingCtrl.create({
