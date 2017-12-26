@@ -24,6 +24,7 @@ import { MainNavigationPageModule } from '../pages/main-navigation/main-navigati
 import { PipesModule } from '../pipes/pipes.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { RegisterPageModule } from '../pages/register/register.module';
+import { ConfigPageModule } from "../pages/config/config.module";
 
 
 export const firebaseConfig = {
@@ -57,6 +58,7 @@ export const firebaseConfig = {
     MainNavigationPageModule,
     ProfilePageModule,
     RegisterPageModule,
+    ConfigPageModule,
     PipesModule
   ],
   bootstrap: [IonicApp],

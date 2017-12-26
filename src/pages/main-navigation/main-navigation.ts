@@ -23,6 +23,7 @@ export class MainNavigationPage {
   friendListRoot = 'FriendListPage';
   chattingListRoot = 'ChattingListPage';
   memoListRoot = 'MemoListPage';
+  configRoot = 'ConfigPage';
 
   constructor(public navCtrl: NavController) {}
 
