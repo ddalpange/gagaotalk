@@ -1,7 +1,7 @@
-import { MemoManagerProvider } from './../../providers/memo-manager/memo-manager';
-import { Memo } from './../../models/memo/memo.interface';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Memo } from '../../../biz/models/memo/memo.interface';
+import { MemoManagerProvider } from '../../../biz/services/memo-manager/memo-manager';
 
 @IonicPage({
   name: 'MemoCreatePage',

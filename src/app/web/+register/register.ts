@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { AlertController, App, LoadingController, NavController, Slides, IonicPage } from 'ionic-angular';
-import { AuthManagerProvider } from '../../providers/auth-manager/auth-manager';
+import { AuthManagerProvider } from '../../biz/providers/auth-manager/auth-manager';
 
 /**
  * Generated class for the RegisterPage page.

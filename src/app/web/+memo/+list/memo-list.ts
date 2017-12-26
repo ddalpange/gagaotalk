@@ -1,13 +1,11 @@
-import { Memo } from './../../models/memo/memo.interface';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
+import { Memo } from '../../../biz/models/memo/memo.interface';
+import { MemoManagerProvider } from '../../../biz/providers/memo-manager/memo-manager';
+import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-manager';
 
-import { MemoCreatePage } from './../memo-create/memo-create';
-import { MemoDetailPage } from './../memo-detail/memo-detail';
 
-import { AuthManagerProvider } from './../../providers/auth-manager/auth-manager';
-import { MemoManagerProvider } from './../../providers/memo-manager/memo-manager';
 @IonicPage({
   name: 'MemoListPage',
   segment: 'memo/list'
@@ -49,11 +47,11 @@ export class MemoListPage {
   }
 
   onClickViewMemoDetail(memo: Memo, memoKey: string) {
-    this.navCtrl.push(MemoDetailPage, { memo: memo, memoKey: memoKey });
+    this.navCtrl.push('MemoDetailPage', { memo: memo, memoKey: memoKey });
   }
   
   onClickCreateMemo() {
-    this.navCtrl.push(MemoCreatePage);
+    this.navCtrl.push('MemoCreatePage');
   }
 
   onClickMoreOption() {

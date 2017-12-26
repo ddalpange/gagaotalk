@@ -1,9 +1,9 @@
-import { AuthManagerProvider } from './../auth-manager/auth-manager';
-import { Memo } from './../../models/memo/memo.interface';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { Memo } from '../../models/memo/memo.interface';
+import { AuthManagerProvider } from '../auth-manager/auth-manager';
 
 /*
   Generated class for the MemoManagerProvider provider.

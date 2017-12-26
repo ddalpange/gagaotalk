@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Memo } from './../../models/memo/memo.interface';
-import { MemoCreatePage } from './../memo-create/memo-create';
-import { MemoManagerProvider } from './../../providers/memo-manager/memo-manager';
+import { Memo } from '../../../biz/models/memo/memo.interface';
+import { MemoManagerProvider } from '../../../biz/services/memo-manager/memo-manager';
 
 @IonicPage({
   name: 'MemoDetailPage',
@@ -32,7 +31,7 @@ export class MemoDetailPage {
   }
 
   onOpenEditMemo() {
-    this.navCtrl.push(MemoCreatePage, { memo: this.memo, memoKey: this.memoKey });
+    this.navCtrl.push('MemoCreatePage', { memo: this.memo, memoKey: this.memoKey });
   }
   
   onDeleteMemo(memo: Memo) {

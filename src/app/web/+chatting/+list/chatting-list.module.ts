@@ -9,5 +9,8 @@ import { ChattingListPage } from './chatting-list';
   imports: [
     IonicPageModule.forChild(ChattingListPage),
   ],
+  exports: [
+    ChattingListPage
+  ]
 })
 export class ChattingListPageModule {}

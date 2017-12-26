@@ -9,5 +9,8 @@ import { FriendListPage } from './friend-list';
   imports: [
     IonicPageModule.forChild(FriendListPage),
   ],
+  exports: [
+    FriendListPage
+  ]
 })
 export class FriendListPageModule {}
