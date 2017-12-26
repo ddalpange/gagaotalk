@@ -22,6 +22,6 @@ export class MainNavigationPage {
   memoListRoot = 'MemoListPage';
   configRoot = 'ConfigPage';
 
-  constructor(public navCtrl: NavController) {}
+  constructor(private navCtrl: NavController) {}
 
 }

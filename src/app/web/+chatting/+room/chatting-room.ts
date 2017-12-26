@@ -86,10 +86,10 @@ export class ChattingRoomPage {
 
   @ViewChild(Content) content: Content;
 
-  public messageForm: any;
+  private messageForm: any;
   chatBox: any;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+  constructor(private navCtrl: NavController, private formBuilder: FormBuilder) {
     this.messageForm = formBuilder.group({
       message: new FormControl('')
     });

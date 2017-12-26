@@ -20,9 +20,9 @@ export class MemoDetailPage {
   contents: string;
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams,
-    public memoManager: MemoManagerProvider) {
+    private navCtrl: NavController, 
+    private navParams: NavParams,
+    private memoManager: MemoManagerProvider) {
   }
   
   ngOnInit() {

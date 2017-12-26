@@ -23,12 +23,12 @@ export class MemoListPage {
   memoList: Observable<Memo[]>;
 
   constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public loadingCtrl: LoadingController,
-    public actionSheetCtrl: ActionSheetController,
-    public authManager: AuthManagerProvider,
-    public memoManager: MemoManagerProvider) {
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private loadingCtrl: LoadingController,
+    private actionSheetCtrl: ActionSheetController,
+    private authManager: AuthManagerProvider,
+    private memoManager: MemoManagerProvider) {
   }
  
   ngOnInit() {

@@ -38,7 +38,7 @@ export class ChattingListPage {
     timestamp: new Date()
   }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
   }
 
   viewMessages(chat) {

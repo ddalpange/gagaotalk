@@ -17,9 +17,9 @@ export class MemoManagerProvider {
   memoList: Observable<Memo[]>
   memoListRef: AngularFireList<Memo>;
   constructor(
-    public http: Http,
-    public afDB: AngularFireDatabase,
-    public authManager: AuthManagerProvider
+    private http: Http,
+    private afDB: AngularFireDatabase,
+    private authManager: AuthManagerProvider
   ) {
     this.initMemoList();
   }

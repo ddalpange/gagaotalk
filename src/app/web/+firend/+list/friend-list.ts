@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../../biz/models/memo/user.interface';
+import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-manager';
 
 /**
  * Generated class for the FriendListPage page.
@@ -17,6 +19,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'friend-list.html',
 })
 export class FriendListPage {
+  user: User;
+  friends: User[];
 
   chats = [{
     imageUrl: 'assets/img/avatar/marty-avatar.png',
@@ -38,7 +42,15 @@ export class FriendListPage {
     timestamp: new Date()
   }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private navCtrl: NavController, 
+    private navParams: NavParams,
+    private auth: AuthManagerProvider) {
+  }
+
+  ngOnInit () {
+    this.user = this.auth.getUserInfo();
+    console.log('유저', this.user);
   }
 
   viewMessages(chat) {

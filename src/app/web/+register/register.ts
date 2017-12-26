@@ -26,11 +26,11 @@ export class RegisterPage {
   passwordConfirm: string = '';
 
   constructor(
-    public navCtrl: NavController, 
-    public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
-    public authManager: AuthManagerProvider,
-    public app: App
+    private navCtrl: NavController, 
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
+    private authManager: AuthManagerProvider,
+    private app: App
   ) { }
 
   // Slider methods

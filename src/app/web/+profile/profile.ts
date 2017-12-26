@@ -61,7 +61,7 @@ export class ProfilePage {
     },
   ];
 
-  constructor(public navCtrl: NavController) { }
+  constructor(private navCtrl: NavController) { }
 
   ionViewDidLoad() {
     console.log('Hello ProfileFour Page');
