@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController, App, LoadingController, NavController, Slides, IonicPage } from 'ionic-angular';
+import { AlertController, LoadingController, NavController, Slides, IonicPage } from 'ionic-angular';
 import { AuthManagerProvider } from '../../biz/providers/auth-manager/auth-manager';
+import { DatabaseManagerProvider } from '../../biz/providers/database-manager/database-manager';
 
 /**
  * Generated class for the RegisterPage page.
@@ -29,8 +30,8 @@ export class RegisterPage {
     private navCtrl: NavController, 
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private authManager: AuthManagerProvider,
-    private app: App
+    private auth: AuthManagerProvider,
+    private db: DatabaseManagerProvider
   ) { }
 
   // Slider methods
@@ -64,85 +65,73 @@ export class RegisterPage {
   }
 
   login() {
-    let loader = this.loadingCtrl.create({
-      content: '로그인 중입니다 ..'
-    });
-
+    let loader = this.getLoader('로그인 중입니다.');
     loader.present();
 
-    this.authManager.loginUser(this.email, this.password)
+    this.auth.loginUser(this.email, this.password)
       .then(user => {
-      console.log('성공!', user);
-      loader.dismiss();
-    })
-    .catch(err => { 
-      console.error('실패!', err);
-      loader.dismiss();
-      const alert = this.getAlert('실패', err.message);
-      alert.present();
-    });;
+        console.log('성공!', user);
+        loader.dismiss();
+      })
+      .catch(err => { 
+        console.error('실패!', err);
+        loader.dismiss();
+        const alert = this.getAlert('실패', err.message);
+        alert.present();
+      });;
   }
 
   facebookLogin() {
-    let loader = this.loadingCtrl.create({
-      content: '로그인 중입니다 ..'
-    });
-
+    let loader = this.getLoader('로그인 중입니다.');
     loader.present();
 
-    this.authManager.facebookLogin()
+    this.auth.facebookLogin()
       .then(user => {
-      console.log('성공!', user);
-      loader.dismiss();
-    })
-    .catch(err => { 
-      console.error('실패!', err);
-      loader.dismiss();
-      const alert = this.getAlert('실패', err.message);
-      alert.present();
-    });;
+        this.saveDatabase(user);
+        
+        console.log('성공!', user);
+        loader.dismiss();
+      })
+      .catch(err => { 
+        console.error('실패!', err);
+        loader.dismiss();
+        const alert = this.getAlert('실패', err.message);
+        alert.present();
+      });;
   };
 
   googleLogin() {
-    let loader = this.loadingCtrl.create({
-      content: '로그인 중입니다 ..'
-    });
+    let loader = this.getLoader('로그인 중입니다.');
 
     loader.present();
 
-    this.authManager.googleLogin()
+    this.auth.googleLogin()
       .then(user => {
-      console.log('성공!', user);
-      loader.dismiss();
-    })
-    .catch(err => { 
-      console.error('실패!', err);
-      loader.dismiss();
-      const alert = this.getAlert('실패', err.message);
-      alert.present();
-    });;
+        this.saveDatabase(user);        
+        loader.dismiss();
+      })
+      .catch(err => { 
+        loader.dismiss();
+        const alert = this.getAlert('실패', err.message);
+        alert.present();
+      });;
   };
   
   resetPassword() {
-    let loader = this.loadingCtrl.create({
-      content: '임시 비밀번호를 발급중입니다...'
-    });
-
+    let loader = this.getLoader('임시 비밀번호를 발급중입니다.');
     loader.present();
 
-    this.authManager.resetPassword(this.email)
+    this.auth.resetPassword(this.email)
       .then(user => {
-      console.log('성공!', user);
-      loader.dismiss();
-      const alert = this.getAlert('성공', '인증 이메일을 발송하였습니다.');
-      alert.present();
-    })
-    .catch(err => { 
-      console.error('실패!', err);
-      loader.dismiss();
-      const alert = this.getAlert('실패', err.message);
-      alert.present();
-    });;
+        loader.dismiss();
+        const alert = this.getAlert('성공', '임시 비밀번호를 발송하였습니다.');
+        alert.present();
+      })
+      .catch(err => { 
+        loader.dismiss();
+        const alert = this.getAlert('실패', err.message);
+        alert.present();
+      });;
   }
 
   signup() {
@@ -152,23 +141,26 @@ export class RegisterPage {
       return;
     }
 
-    let loader = this.loadingCtrl.create({
-      content: '회원가입 중입니다 ..'
-    });
+    let loader = this.getLoader('회원가입 중입니다.');
     loader.present();
  
-    this.authManager.signUpUser(this.email, this.password)
-    .then(user => {
-      console.log('성공!', user);
-      loader.dismiss();
-      const alert = this.getAlert('성공', '회원가입에 성공하였습니다.');
-      alert.present();
-    })
-    .catch(err => { 
-      loader.dismiss();
-      const alert = this.getAlert('실패', err.message);
-      alert.present();
-    });
+    this.auth.signUpUser(this.email, this.password)
+      .then(user => {
+        this.saveDatabase(user);
+        loader.dismiss();
+        const alert = this.getAlert('성공', '회원가입에 성공하였습니다.');
+        alert.present();
+      })
+      .catch(err => { 
+        loader.dismiss();
+        const alert = this.getAlert('실패', err.message);
+        alert.present();
+      });
+  }
+
+  saveDatabase(user) {
+    let users = this.db.users();
+    users.push(user.toJSON());
   }
 
   getAlert(title: string, message: string) {
@@ -178,6 +170,12 @@ export class RegisterPage {
       buttons: [{
         text: '확인',
       }]
+    });
+  }
+
+  getLoader(content: string) {
+    return this.loadingCtrl.create({
+      content: content
     });
   }
 }

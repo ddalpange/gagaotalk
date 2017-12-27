@@ -12,19 +12,21 @@
       <ion-avatar item-start>
         <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
       </ion-avatar>
-      <h2>{{user?.displayName}}</h2>
+      <h2>안녕</h2>
       <ion-note item-end>존예다현</ion-note>
     </ion-item>
   </ion-list>
   <ion-list>
     <ion-list-header>친구들</ion-list-header>
-    <ion-item *ngFor="let chat of chats" (click)="viewMessages(chat)">
-      <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
-      </ion-avatar>
-      <h2>{{chat.title}}</h2>
-      <ion-note item-end>{{chat.lastMessage}}</ion-note>
-    </ion-item>
+    <ng-template ngFor let-friend [ngForOf]="friends | async">
+      <ion-item (click)="viewMessages(friend)">
+        <ion-avatar item-start>
+          <img [src]="friend.photoURL">
+        </ion-avatar>
+        <!-- <h2>{{friend.displayName || firend.email}}</h2> -->
+        <ion-note item-end>{{friend.lastMessage}}</ion-note>
+      </ion-item>
+    </ng-template>
   </ion-list>
 
 </ion-content>

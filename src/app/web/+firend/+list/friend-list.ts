@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { User } from '../../../biz/models/memo/user.interface';
+import { User } from '../../../biz/models/user.interface';
+import { Observable } from 'rxjs/Observable';
 import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-manager';
+import { DatabaseManagerProvider } from '../../../biz/providers/database-manager/database-manager';
+import { AngularFireList } from 'angularfire2/database';
 
 /**
  * Generated class for the FriendListPage page.
@@ -19,8 +22,9 @@ import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-ma
   templateUrl: 'friend-list.html',
 })
 export class FriendListPage {
-  user: User;
-  friends: User[];
+
+  friends: Observable<User[]>;
+  firendsRef: AngularFireList<{}>;
 
   chats = [{
     imageUrl: 'assets/img/avatar/marty-avatar.png',
@@ -45,15 +49,20 @@ export class FriendListPage {
   constructor(
     private navCtrl: NavController, 
     private navParams: NavParams,
-    private auth: AuthManagerProvider) {
+    private auth: AuthManagerProvider,
+    private db: DatabaseManagerProvider) {
   }
 
   ngOnInit () {
-    this.user = this.auth.getUserInfo();
-    console.log('유저', this.user);
+    this.firendsRef = this.db.users();
+    this.friends = this.firendsRef.snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val()}));
+    });
+    console.log(this.friends);
   }
 
   viewMessages(chat) {
+    console.log(chat);
     this.navCtrl.push('ChattingRoomPage', { chatId: chat.id });
   }
 

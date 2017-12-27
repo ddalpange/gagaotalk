@@ -18,14 +18,13 @@ import { ProvidersModule } from './biz/providers/providers.module';
 
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAb_0ZNH9Bsj_vPZ4F2W07KqoqwIobUp4A",
-  authDomain: "memo-28314.firebaseapp.com",
-  databaseURL: "https://memo-28314.firebaseio.com",
-  projectId: "memo-28314",
-  storageBucket: "memo-28314.appspot.com",
-  messagingSenderId: "830787341186"
+  apiKey: "AIzaSyDbtHRdtprI1td-OMwx_9isoKen5fojclE",
+  authDomain: "gagaotalk-707cd.firebaseapp.com",
+  databaseURL: "https://gagaotalk-707cd.firebaseio.com",
+  projectId: "gagaotalk-707cd",
+  storageBucket: "gagaotalk-707cd.appspot.com",
+  messagingSenderId: "708119708357"
 };
-
 
 @NgModule({
   declarations: [MyApp],

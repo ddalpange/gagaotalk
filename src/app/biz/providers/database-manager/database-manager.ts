@@ -11,7 +11,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class DatabaseManagerProvider {
 
   constructor(private afDb: AngularFireDatabase) {
-    console.log('Hello DatabaseManagerProvider Provider');
+  }
+
+  users() {
+    return this.afDb.list('users');
   }
 
 }

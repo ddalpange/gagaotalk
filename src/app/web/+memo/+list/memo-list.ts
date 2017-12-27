@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { IonicPage, NavController, NavParams, LoadingController, ActionSheetController } from 'ionic-angular';
-import { Memo } from '../../../biz/models/memo/memo.interface';
+import { Memo } from '../../../biz/models/memo.interface';
 import { MemoManagerProvider } from '../../../biz/providers/memo-manager/memo-manager';
 import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-manager';
 

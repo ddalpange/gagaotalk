@@ -5,7 +5,6 @@ import * as firebase from 'firebase/app';
 
 import 'rxjs/add/operator/map';
 import { User } from 'firebase/app';
-import { AngularFireDatabase } from 'angularfire2/database';
 
 @Injectable()
 export class AuthManagerProvider {
@@ -15,8 +14,8 @@ export class AuthManagerProvider {
   private authState: Observable<firebase.User>
 
   constructor(
-    private afAuth: AngularFireAuth,
-    private afDb: AngularFireDatabase) {
+    private afAuth: AngularFireAuth
+  ) {
     this.initAuth();
   }
 
@@ -37,17 +36,12 @@ export class AuthManagerProvider {
     return this.authState;
   }
 
-  getUserInfo(): User {
-    return this.userInfo;
+  getUserInfo(): firebase.User {
+    return this.afUser;
   }
 
   setUserInfo(afUser: firebase.User) {
-    let userInfo: any = afUser.toJSON();
-    this.userInfo = userInfo;
     this.afUser = afUser;
-    console.log(userInfo);
-    let dbObj = this.afDb.object(`user/${this.userInfo.uid}`);
-    dbObj.update(this.userInfo);
   }
 
   initUserInfo() {

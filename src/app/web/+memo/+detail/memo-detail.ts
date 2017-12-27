@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Memo } from '../../../biz/models/memo/memo.interface';
+import { Memo } from '../../../biz/models/memo.interface';
 import { MemoManagerProvider } from '../../../biz/providers/memo-manager/memo-manager';
 
 @IonicPage({

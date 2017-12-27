@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { Memo } from '../../models/memo/memo.interface';
+import { Memo } from '../../models/memo.interface';
 import { AuthManagerProvider } from '../auth-manager/auth-manager';
 
 /*

@@ -1,4 +1,4 @@
-export class User {
+export interface User {
   apiKey: string;
   appName: string;
   authDomain: string;
@@ -19,6 +19,4 @@ export class User {
     refreshToken: string
   };
   uid: string;
-  chatIds: string[];
-  friendIds: string[];
 }
