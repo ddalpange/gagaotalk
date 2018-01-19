@@ -1,59 +1,30 @@
 <ion-header>
-  <ion-navbar primary>
-    <ion-title>
-      메시지
-    </ion-title>
+  <ion-navbar color="light-brown">
+    <ion-searchbar color="brown" placeholder="검색" padding-left></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="settings">
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content class="chats">
-  <ion-list>
-    <ion-list-header>Today</ion-list-header>
-    <ion-item *ngFor="let chat of chats" (click)="viewMessages(chat)">
+<ion-content>
+  <ion-list no-lines>
+    <ion-item *ngFor="let chat of chats">
       <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
+        <img src={{chat.image}}>
       </ion-avatar>
-      <h2>{{chat.title}}</h2>
-      <p>{{chat.lastMessage}}</p>
-      <!-- <ion-note item-end>{{chat.timestamp | moment:"hh:mm a" | lowercase}}</ion-note> -->
-      <ion-note item-end>{{chat.timestamp | date }}</ion-note>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>Yesterday</ion-list-header>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
-      </ion-avatar>
-      <h2>McFly</h2>
-      <p>Lorem ipsum dolor sit amet..</p>
-      <ion-note item-end>11:11 pm</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
-      </ion-avatar>
-      <h2>McFly</h2>
-      <p>Lorem ipsum dolor sit amet..</p>
-      <ion-note item-end>11:11 pm</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
-      </ion-avatar>
-      <h2>McFly</h2>
-      <p>Lorem ipsum dolor sit amet..</p>
-      <ion-note item-end>11:11 pm</ion-note>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>Last Week</ion-list-header>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
-      </ion-avatar>
-      <h2>McFly</h2>
-      <p>Lorem ipsum dolor sit amet..</p>
-      <ion-note item-end>11:11 pm</ion-note>
+      <h2>
+        {{chat.name}}
+        <ion-icon name="notifications-off"></ion-icon>
+
+      </h2>
+      <p>{{chat.lastText}}</p>
+      <ion-note item-end text-right>
+        <p>2015-12-22</p>
+        <strong class="unread">{{chat.unreadCount}}</strong>
+      </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

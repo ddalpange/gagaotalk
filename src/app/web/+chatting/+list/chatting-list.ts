@@ -18,25 +18,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChattingListPage {
 
-  chats = [{
-    imageUrl: 'assets/img/avatar/marty-avatar.png',
-    title: 'McFly',
-    lastMessage: 'Hey, what happened yesterday?',
-    timestamp: new Date()
-  },
-  {
-    imageUrl: 'assets/img/avatar/ian-avatar.png',
-    title: 'Venkman',
-    lastMessage: 'Sup, dude',
-    timestamp: new Date()
-  }
-  ,
-  {
-    imageUrl: 'assets/img/avatar/sarah-avatar.jpg',
-    title: 'Sarah Mcconnor',
-    lastMessage: 'You still ow me that pizza.',
-    timestamp: new Date()
-  }];
+  chats = [
+    {
+      image: "/assets/img/avatar/momo.jpg",
+      name: "모구리",
+      lastText: "열심히 하면 맛있는걸 먹을수 있다.",
+      sendTimeAt: new Date(),
+      chatId: "dfd3fXX2df",
+      unreadCount: 3
+    }, {
+      image: "/assets/img/avatar/momo.jpg",
+      name: "모구리",
+      lastText: "열심히 하면 맛있는걸 먹을수 있다.",
+      sendTimeAt: new Date(),
+      chatId: "dfd3fXX2df",
+      unreadCount: 3
+    }, {
+      image: "/assets/img/avatar/momo.jpg",
+      name: "모구리",
+      lastText: "열심히 하면 맛있는걸 먹을수 있다.",
+      sendTimeAt: new Date(),
+      chatId: "dfd3fXX2df",
+      unreadCount: 3
+    }
+  ];
 
   constructor(private navCtrl: NavController, private navParams: NavParams) {
   }

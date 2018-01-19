@@ -1,55 +1,38 @@
-<ion-header>
-	<ion-navbar>
-		<ion-title>Chat</ion-title>
+<ion-header color="light-blue">
+	<ion-navbar color="light-blue">
+		<ion-title>@x@</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="search" margin></ion-icon>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
 	</ion-navbar>
 </ion-header>
-<ion-content>
-	<div *ngFor="let message of messages" class="message-wrapper" on-hold="onMessageHold($event, $index, message)">
-		<div *ngIf="user._id !== message.userId">
-			<!-- <img (click)="viewProfile(message)" class="profile-pic left" [src]="toUser.pic" onerror="onProfilePicError(this)" /> -->
-			<img (click)="viewProfile(message)" class="profile-pic left" [src]="'https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg'"/>
-			<!--  wave-->
-			<div class="chat-bubble left slide-left">
+<ion-content padding class="chats" #content>
+  <ng-template ngFor let-chat [ngForOf]="chats">
 
-				<div class="message" [innerHTML]="message.text" autolinker>
-				</div>
+    <div class="chat me" *ngIf="isMe(chat.userId)">
+      <div class="content">
+        <div class="message">{{chat.text}}</div>
+      </div>
+      <div class="time">오후 8:25</div>
+    </div>
 
-				<div class="message-detail">
-					<span (click)="viewProfile(message)" class="bold">{{toUser.username}}</span>,
-					<!-- <span>{{message.date | moment:"ago" | lowercase}}</span> -->
-				</div>
-
-			</div>
-		</div>
-
-		<div *ngIf="user._id === message.userId">
-
-			<!-- <img (click)="viewProfile(message)" class="profile-pic right" [src]="user.pic" onerror="onProfilePicError(this)" /> -->
-			<img (click)="viewProfile(message)" class="profile-pic right" [src]="'https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg'"/>
-
-			<div class="chat-bubble right slide-right">
-
-				<div class="message" [innerHTML]="message.text" autolinker>
-				</div>
-
-				<div class="message-detail">
-					<span (click)="viewProfile(message)" class="bold">{{user.username}}</span>,
-					<!-- <span>{{message.date | moment:"ago" | lowercase}}</span> -->
-				</div>
-
-			</div>
-
-		</div>
-
-		<div class="cf"></div>
-
-	</div>
+    <div class="chat you" *ngIf="!isMe(chat.userId)">
+      <img src="{{getUser(chat.userId).image}}" class="profile-image" (click)="viewProfile()"/>
+      <div class="content">
+        <div class="name">{{getUser(chat.userId).name}}</div>
+        <div class="message">{{chat.text}}</div>
+      </div>
+      <div class="time">오후 8:25</div>
+    </div>
+  </ng-template>
 </ion-content>
 <ion-footer>
-	<form [formGroup]="messageForm" (submit)="send(chatBox)" novalidate>
 		<ion-item>
-			<ion-input formControlName="message" [(ngModel)]="chatBox" placeholder="Send {{toUser.username}} a message..."></ion-input>
-			<button ion-button clear (click)="send(chatBox)" item-end><ion-icon class="footer-btn" name="send"></ion-icon></button>
+      <button ion-button clear (click)="send(chatBox)" item-start><ion-icon name="add-circle"></ion-icon></button>
+      <ion-input [(ngModel)]="chatBox"></ion-input>
+			<button ion-button clear (click)="send(chatBox)" item-end><ion-icon name="send"></ion-icon></button>
 		</ion-item>
-	</form>
 </ion-footer>

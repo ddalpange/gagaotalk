@@ -1,6 +1,12 @@
-<ion-tabs>
-    <ion-tab [root]="friendListRoot" tabIcon="people"></ion-tab>
-    <ion-tab [root]="chattingListRoot" tabIcon="chatbubbles"></ion-tab>
-    <ion-tab [root]="memoListRoot" tabIcon="paper"></ion-tab>
-    <ion-tab [root]="configRoot" tabIcon="settings"></ion-tab>
+<ion-tabs tabsPlacement="{{isAndroid ? 'top' : 'bottom'}}">
+    <ion-tab [root]="friendListRoot" tabTitle="{{!isAndroid ? '친구' : null}}" tabUrlPath="0" tabIcon="person"></ion-tab>
+    <ion-tab [root]="chattingListRoot" tabTitle="{{!isAndroid ? '채팅' : null}}" tabUrlPath="1" tabIcon="text"></ion-tab>
+    <ion-tab [root]="memoListRoot" tabTitle="{{!isAndroid ? '채널' : null}}" tabUrlPath="2" tabIcon="paper"></ion-tab>
+    <ion-tab [root]="configRoot" tabTitle="{{!isAndroid ? '더보기' : null}}" tabUrlPath="3" tabIcon="more"></ion-tab>
+    <!--<ion-tab *ngFor="let tab of tabs"-->
+             <!--[root]="tab.root"-->
+             <!--tabTitle="{{tab.tabTitle}}"-->
+             <!--tabUrlPath="{{tab.tabUrlPath}}"-->
+             <!--tabIcon="{{tab.tabIcon}}"-->
+    <!--&gt;</ion-tab>-->
 </ion-tabs>

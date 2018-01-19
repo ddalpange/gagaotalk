@@ -1,87 +1,20 @@
-<ion-content class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
-  <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-  </ion-header>
-  <ion-slides #slider class="content-slider" direction="vertical">
-    <ion-slide class="swiper-no-swiping">
-      <div padding>
-        <img class="logo" src="assets/img/logo/logo-gagaotalk.png" />
-        <ion-slides class="text-slider" autoplay="2000">
-          <ion-slide>
-            <h3> Really nice stuff </h3>
-          </ion-slide>
-          <ion-slide>
-            <img src="assets/img/misc/emoji.png" />
-          </ion-slide>
-          <ion-slide>
-            <h3> Unique experiences given to you for just a couple bucks </h3>
-          </ion-slide>
-          <ion-slide>
-            <h3> Share what you love </h3>
-          </ion-slide>
-        </ion-slides>
-        <ion-row>
-          <ion-col col-6>
-            <button ion-button round color="light" class="login-button" (click)="goToLogin()">SIGN IN</button>
-          </ion-col>
-          <ion-col col-6>
-            <button ion-button round color="light" class="login-button" (click)="goToSignup()">SIGN UP</button>
-          </ion-col>
-        </ion-row>
-      </div>
-    </ion-slide>
-    <ion-slide class="zoom swiper-no-swiping">
-      <ion-slides #innerSlider class="content-slider">
-        <ion-slide class="swiper-no-swiping">
-          <div style="padding: 20% 32px 32px 32px">
-            <ion-item>
-              <ion-label floating>E-mail</ion-label>
-              <ion-input type="text" [(ngModel)]="email"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-label floating>Password</ion-label>
-              <ion-input type="password" [(ngModel)]="password"></ion-input>
-            </ion-item>
-            <button ion-button block round icon-start (click)="login()" color="light" class="login-button"><ion-icon name="mail"></ion-icon>Login</button>
-            <button ion-button block round icon-start (click)="facebookLogin()" color="primary" class="login-button"><ion-icon name="logo-facebook"></ion-icon>Login</button>
-            <button ion-button block round icon-start (click)="googleLogin()" color="google" class="login-button"><ion-icon name="logo-google"></ion-icon>Login</button>
-            <button ion-button clear (click)="slideNext()" color="light" class="forgot-button">FORGOT PASSWORD?</button>
-          </div>
-          <button ion-button clear (click)="goToSignup()" class="slide-button position-bottom">GO TO SIGNUP<ion-icon name="arrow-down"></ion-icon></button>
-        </ion-slide>
-        <ion-slide class="swiper-no-swiping">
-          <div style="padding: 20% 32px 32px 32px">
-            <ion-item>
-              <ion-label floating>E-mail</ion-label>
-              <ion-input type="email" [(ngModel)]="email"></ion-input>
-            </ion-item>
-            <button ion-button block round (click)="resetPassword()" color="light" class="login-button">RESET PASSWORD</button>
-            <button ion-button clear (click)="slidePrevious()" color="light" class="goback-button"><ion-icon name="arrow-back"></ion-icon> GO BACK</button>
-          </div>
-        </ion-slide>
-      </ion-slides>
-    </ion-slide>
-    <ion-slide class="zoom swiper-no-swiping">
-      <button ion-button clear (click)="goToLogin()" class="slide-button">
-        GO TO LOGIN
-        <ion-icon name="arrow-up"></ion-icon>
-      </button>
-      <div style="padding: 32px">
-        <ion-item>
-          <ion-label floating>E-mail</ion-label>
-          <ion-input type="text" [(ngModel)]="email"></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" [(ngModel)]="password"></ion-input>
-        </ion-item>
-        <ion-item class="margin-bottom">
-          <ion-label floating>Confirm Password</ion-label>
-          <ion-input type="password" [(ngModel)]="passwordConfirm"></ion-input>
-        </ion-item>
-        <button ion-button block round (click)="signup()" color="light" class="login-button">SIGN UP</button>
-      </div>
-    </ion-slide>
-  </ion-slides>
+<ion-content class="wrapper" padding>
+    <div class="image-wrapper">
+      <!--<img class="logo" src="assets/img/logo/logo-gagaotalk.png" />-->
+    </div>
+    <div class="form-wrapper">
+      <!--<ion-input class="input" placeholder="010-1234-5678" color="light"></ion-input>-->
+      <ion-input class="input" type="email" placeholder="이메일을 입력하세요." color="light" [(ngModel)]="email"></ion-input>
+      <ion-input class="input" type="password" placeholder="비밀번호를 입력하세요." color="light" [(ngModel)]="password"></ion-input>
+      <ion-input *ngIf="isSignUp" class="input" type="password" placeholder="비밀번호를 한번 더 입력하세요." color="light" [(ngModel)]="passwordConfirm"></ion-input>
+
+      <button *ngIf="!isSignUp" ion-button block color="brown" (click)="login()">로그인</button>
+      <button *ngIf="!isSignUp" ion-button block color="facebook" (click)="facebookLogin()">페이스북 로그인</button>
+      <button *ngIf="!isSignUp" ion-button block color="google" (click)="googleLogin()">구글 로그인</button>
+      <button *ngIf="isSignUp" ion-button block color="brown" (click)="signup()">회원가입</button>
+
+      <button ion-button block clear (click)="toggleSiginup()">{{isSignUp ? '돌아가기' : '계정이 없으신가요?'}}</button>
+
+      <!--<button ion-button block color="brown">핸드폰 번호 가져오기</button>-->
+    </div>
 </ion-content>

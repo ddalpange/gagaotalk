@@ -2,7 +2,17 @@ import { FormControl, FormBuilder } from '@angular/forms';
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, Content } from 'ionic-angular';
 
+interface Chat {
+  userId: string;
+  text: string;
+  sendTimeAt: Date;
+}
 
+interface MockUser {
+  id: string;
+  image: string;
+  name: string;
+}
 /**
  * Generated class for the ChattingRoomPage page.
  *
@@ -19,117 +29,51 @@ import { IonicPage, NavController, Content } from 'ionic-angular';
   templateUrl: 'chatting-room.html',
 })
 export class ChattingRoomPage {
-  toUser = {
-    _id: '534b8e5aaa5e7afc1b23e69b',
-    pic: 'assets/img/avatar/ian-avatar.png',
-    username: 'Venkman',
+  me: MockUser = {
+    id: 'a',
+    name: 'ddalpange',
+    image: '/assets/img/avatar/me.jpg'
   };
 
-  user = {
-    _id: '534b8fb2aa5e7afc1b23e69c',
-    pic: 'assets/img/avatar/marty-avatar.png',
-    username: 'Marty',
-  };
-
-  doneLoading = false;
-
-  messages = [
+  users: MockUser[] = [
     {
-      _id: 1,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'OH CRAP!!'
-    },
-    {
-      _id: 2,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'what??'
-    },
-    {
-      _id: 3,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'Pretty long message with lots of content'
-    },
-    {
-      _id: 4,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'Pretty long message with even way more of lots and lots of content'
-    },
-    {
-      _id: 5,
-      date: new Date(),
-      userId: this.user._id,
-      username: this.user.username,
-      pic: this.user.pic,
-      text: 'what??'
-    },
-    {
-      _id: 6,
-      date: new Date(),
-      userId: this.toUser._id,
-      username: this.toUser.username,
-      pic: this.toUser.pic,
-      text: 'yes!'
+      id: 'b',
+      name: '모모',
+      image: '/assets/img/avatar/momo.jpg'
     }
   ];
 
+  chats: Chat[] = [
+    {
+      userId: 'b',
+      text: '안녕하세요.',
+      sendTimeAt: new Date()
+    }, {
+      userId: 'b',
+      text: '안녕하세요.',
+      sendTimeAt: new Date()
+    }, {
+      userId: 'a',
+      text: '안녕하세요.',
+      sendTimeAt: new Date()
+    }
+  ]
+
   @ViewChild(Content) content: Content;
+  chatBox: string = '';
 
-  private messageForm: any;
-  chatBox: any;
-
-  constructor(private navCtrl: NavController, private formBuilder: FormBuilder) {
-    this.messageForm = formBuilder.group({
-      message: new FormControl('')
-    });
-    this.chatBox = '';
-
+  constructor(private navCtrl: NavController) {
   }
 
-  send(message) {
-    if (message && message !== '') {
-      // this.messageService.sendMessage(chatId, message);
-      const messageData =
-        {
-          toId: this.toUser._id,
-          _id: 6,
-          date: new Date(),
-          userId: this.user._id,
-          username: this.toUser.username,
-          pic: this.toUser.pic,
-          text: message
-        };
+  isMe(userId): boolean {
+    return this.me.id === userId;
+  }
 
-      this.messages.push(messageData);
-      this.scrollToBottom();
-
-      setTimeout(() => {
-        const replyData =
-          {
-            toId: this.toUser._id,
-            _id: 6,
-            date: new Date(),
-            userId: this.toUser._id,
-            username: this.toUser.username,
-            pic: this.toUser.pic,
-            text: 'Just a quick reply'
-          };
-        this.messages.push(replyData);
-        this.scrollToBottom();
-      }, 1000);
-    }
-    this.chatBox = '';
+  getUser(userId): MockUser {
+    let users = this.users.slice();
+    users.push(this.me);
+    console.log(this.users.concat(new Array(this.me)).filter(user => user.id === userId))
+    return this.users.concat(new Array(this.me)).filter(user => user.id === userId)[0];
   }
 
   scrollToBottom() {
@@ -138,7 +82,29 @@ export class ChattingRoomPage {
     }, 100);
   }
 
-  viewProfile(chat) {
+  send() {
+    this.chats.push({
+      userId: this.me.id,
+      text: this.chatBox,
+      sendTimeAt: new Date()
+    });
+
+    this.scrollToBottom();
+
+    window.setTimeout(() => {this.receive()}, 500);
+  }
+
+  receive() {
+    this.chats.push({
+      userId: this.users[0].id,
+      text: '어쩌라고!',
+      sendTimeAt: new Date()
+    });
+
+    this.scrollToBottom();
+  }
+
+  viewProfile() {
     this.navCtrl.push('ProfilePage');
   }
 

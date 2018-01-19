@@ -1,3 +1,19 @@
 page-chatting-list {
-
+  .unread {
+    background: red;
+    color: white;
+    border-radius: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1.1em;
+  }
+  .searchbar-md .searchbar-input {
+    background-color: #3D2E34;
+    border-radius: 25px;
+    color: white;
+    &:focus {
+      background-color: white;
+      color: #141414;
+    }
+  }
 }

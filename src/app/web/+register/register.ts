@@ -20,45 +20,21 @@ import { DatabaseManagerProvider } from '../../biz/providers/database-manager/da
 })
 export class RegisterPage {
 
-  backgroundImage: string = 'assets/img/background/background-dahyeon-1.jpg';
-  
   email: string = '';
   password: string = '';
   passwordConfirm: string = '';
+  isSignUp: boolean = false;
 
   constructor(
-    private navCtrl: NavController, 
+    private navCtrl: NavController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
     private auth: AuthManagerProvider,
     private db: DatabaseManagerProvider
   ) { }
 
-  // Slider methods
-  @ViewChild('slider') slider: Slides;
-  @ViewChild('innerSlider') innerSlider: Slides;
-
-  goToLogin() {
-    this.slider.slideTo(1);
-    this.reset();
-  }
-
-  goToSignup() {
-    this.slider.slideTo(2);
-    this.reset();
-  }
-
-  slideNext() {
-    this.innerSlider.slideNext();
-    this.reset();
-  }
-
-  slidePrevious() {
-    this.innerSlider.slidePrev();
-    this.reset();
-  }
-
-  reset() {
+  toggleSiginup() {
+    this.isSignUp = !this.isSignUp;
     this.email = '';
     this.password = '';
     this.passwordConfirm = '';
@@ -70,11 +46,9 @@ export class RegisterPage {
 
     this.auth.loginUser(this.email, this.password)
       .then(user => {
-        console.log('성공!', user);
         loader.dismiss();
       })
-      .catch(err => { 
-        console.error('실패!', err);
+      .catch(err => {
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
         alert.present();
@@ -88,11 +62,11 @@ export class RegisterPage {
     this.auth.facebookLogin()
       .then(user => {
         this.saveDatabase(user);
-        
+
         console.log('성공!', user);
         loader.dismiss();
       })
-      .catch(err => { 
+      .catch(err => {
         console.error('실패!', err);
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
@@ -107,16 +81,16 @@ export class RegisterPage {
 
     this.auth.googleLogin()
       .then(user => {
-        this.saveDatabase(user);        
+        this.saveDatabase(user);
         loader.dismiss();
       })
-      .catch(err => { 
+      .catch(err => {
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
         alert.present();
       });;
   };
-  
+
   resetPassword() {
     let loader = this.getLoader('임시 비밀번호를 발급중입니다.');
     loader.present();
@@ -127,7 +101,7 @@ export class RegisterPage {
         const alert = this.getAlert('성공', '임시 비밀번호를 발송하였습니다.');
         alert.present();
       })
-      .catch(err => { 
+      .catch(err => {
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
         alert.present();
@@ -143,7 +117,7 @@ export class RegisterPage {
 
     let loader = this.getLoader('회원가입 중입니다.');
     loader.present();
- 
+
     this.auth.signUpUser(this.email, this.password)
       .then(user => {
         this.saveDatabase(user);
@@ -151,7 +125,7 @@ export class RegisterPage {
         const alert = this.getAlert('성공', '회원가입에 성공하였습니다.');
         alert.present();
       })
-      .catch(err => { 
+      .catch(err => {
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
         alert.present();

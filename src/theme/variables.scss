@@ -24,7 +24,6 @@ $app-direction: ltr;
 
 
 
-
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.
@@ -39,15 +38,21 @@ $colors: (
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
-  google:   #db3236,
-  facebook: #3b5998,
+  google:     #db3236,
+  facebook:   #3b5998,
+  brown:    #3D2E34,
+  light-brown: lighten(#3D2E34, 10%),
+  grey: #DFDFDF,
+  yello: #DEC804,
+  light-yello: #F7E600,
+  light-blue: #AFC0D0
 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
+$tabs-ios-tab-color-active: #3D2E34;
 
 
 
@@ -55,8 +60,7 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
+$tabs-md-tab-color-active: #3D2E34;
 
 // App Windows Variables
 // --------------------------------------------------

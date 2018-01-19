@@ -1,32 +1,27 @@
 <ion-header>
-  <ion-navbar primary>
-    <ion-title>
-      친구 몇명
-    </ion-title>
+  <ion-navbar color="light-brown">
+    <ion-searchbar color="brown" placeholder="검색" padding-left></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="settings">
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content class="chats">
-  <ion-list>
-    <ion-list-header>나</ion-list-header>
-    <ion-item>
+<ion-content>
+  <ion-list no-lines>
+    <ion-list-header no-lines no-margin>나</ion-list-header>
+    <ion-item *ngFor="let friend of friends" (click)="viewMessages(friend)">
       <ion-avatar item-start>
-        <img src="https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg">
+        <img src={{friend.image}}>
       </ion-avatar>
-      <h2>안녕</h2>
-      <ion-note item-end>존예다현</ion-note>
+      <h2>{{friend.name}}</h2>
+      <p item-end text-right class="bubble-wrapper">
+        <span class="bubble me">
+        {{friend.comment}}
+        </span>
+      </p>
     </ion-item>
   </ion-list>
-  <ion-list>
-    <ion-list-header>친구들</ion-list-header>
-    <ng-template ngFor let-friend [ngForOf]="friends | async">
-      <ion-item (click)="viewMessages(friend)">
-        <ion-avatar item-start>
-          <img [src]="friend.photoURL">
-        </ion-avatar>
-        <!-- <h2>{{friend.displayName || firend.email}}</h2> -->
-        <ion-note item-end>{{friend.lastMessage}}</ion-note>
-      </ion-item>
-    </ng-template>
-  </ion-list>
-
 </ion-content>

@@ -10,4 +10,13 @@ page-memo-list {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  .searchbar-md .searchbar-input {
+    background-color: #3D2E34;
+    border-radius: 25px;
+    color: white;
+    &:focus {
+      background-color: white;
+      color: #141414;
+    }
+  }
 }

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "memo-28314"
+    "default": "memo-28314",
+    "dev": "gagaotalk-707cd"
   }
 }
