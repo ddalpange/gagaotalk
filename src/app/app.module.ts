@@ -15,6 +15,7 @@ import { MyApp } from './app.component';
 import { WebPageModule } from './web/web.module';
 import { PipesModule } from './biz/pipes/pipes.module';
 import { ProvidersModule } from './biz/providers/providers.module';
+import { AngularFirestoreModule } from "angularfire2/firestore";
 
 
 export const firebaseConfig = {
@@ -39,6 +40,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFirestoreModule,
     WebPageModule,
     PipesModule,
     ProvidersModule

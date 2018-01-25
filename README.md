@@ -23,7 +23,7 @@ gagaotalk
 │  │  │   ├─models
 │  │  │   └─service
 │  │  └─web
-│  │      ├─+chatting
+│  │      ├─+chat
 │  │      │  ├─+list
 │  │      │  │  └─item
 │  │      │  └─+room

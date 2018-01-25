@@ -3,38 +3,44 @@
     <ion-navbar>
     </ion-navbar>
   </ion-header>
-  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + user.coverImage +')'}"></div>
+  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' +  'assets/img/background/background-5.jpg' +')'}"></div>
   <div id="content">
     <div id="profile-info" padding>
-      <img id="profile-image" [src]="user.profileImage">
-      <h3 id="profile-name">{{user.name}}</h3>
-      <p>{{user.occupation}} &bull; {{user.location}}</p>
-      <p class="profile-description">{{user.description}}</p>
-      <button ion-button *ngIf="!following" small color="purple" (click)="follow()">Follow</button>
-      <button ion-button *ngIf="following" class="follow-button" small color="purple" (click)="follow()">Following<ion-icon name="checkmark"></ion-icon></button>
+      <img id="profile-image" [src]="(user$ | async)?.photoURL || '/assets/img/avatar/momo.jpg'">
+      <h3 id="profile-name">{{(user$ | async)?.displayName}}</h3>
+      <p class="profile-description">{{(user$ | async)?.email}}</p>
+      <button ion-button icon-only round (click)="gonnaChatRoom()">
+        <ion-icon name="chatbubbles"></ion-icon>
+      </button>
+      <button ion-button icon-only round>
+        <ion-icon name="call"></ion-icon>
+      </button>
+
+      <!--<button ion-button *ngIf="!following" small color="purple" (click)="follow()">Follow</button>-->
+      <!--<button ion-button *ngIf="following" class="follow-button" small color="purple" (click)="follow()">Following<ion-icon name="checkmark"></ion-icon></button>-->
     </div>
     <hr/>
     <ion-row class="profile-numbers">
       <ion-col col-4>
         <p>Followers</p>
-        <span>{{user.followers}}</span>
+        <span>{{123}}</span>
       </ion-col>
       <ion-col col-4>
         <p>Following</p>
-        <span>{{user.following}}</span>
+        <span>{{123}}</span>
       </ion-col>
       <ion-col col-4>
         <p>Posts</p>
-        <span>{{user.posts}}</span>
+        <span>{{123}}</span>
       </ion-col>
     </ion-row>
     <div id="posts">
       <ion-card *ngFor="let post of posts">
         <ion-item>
           <ion-avatar item-start>
-            <img [src]="user.profileImage">
+            <img [src]="(user$ | async)?.photoURL">
           </ion-avatar>
-          <h2 class="sticky">{{user.name}}</h2>
+          <h2 class="sticky">{{(user$ | async)?.displayName}}</h2>
           <p>{{post.date}}</p>
         </ion-item>
         <img [src]="post.postImageUrl" (click)="imageTapped(post)">

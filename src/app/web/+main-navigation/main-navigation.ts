@@ -18,7 +18,7 @@ import { IonicPage, NavController, Platform } from 'ionic-angular';
 export class MainNavigationPage {
 
   friendListRoot = 'FriendListPage';
-  chattingListRoot = 'ChattingListPage';
+  chatListRoot = 'ChatListPage';
   memoListRoot = 'MemoListPage';
   configRoot = 'ConfigPage';
 
@@ -31,9 +31,9 @@ export class MainNavigationPage {
   //     tabUrlPath: 'friend/list',
   //     tabIcon: 'person'
   //   }, {
-  //     root: 'ChattingListPage',
+  //     root: 'ChatListPage',
   //     tabTitle: '채팅',
-  //     tabUrlPath: 'chatting/list',
+  //     tabUrlPath: 'chat/list',
   //     tabIcon: 'text'
   //   }, {
   //     root: 'MemoListPage',
@@ -50,7 +50,6 @@ export class MainNavigationPage {
 
   constructor(private platform: Platform) {
     this.isAndroid = platform.is('android');
-    console.log(this.isAndroid);
   }
 
 }

@@ -1,14 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-import { AlertController, LoadingController, NavController, Slides, IonicPage } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { AlertController, LoadingController, IonicPage } from 'ionic-angular';
 import { AuthManagerProvider } from '../../biz/providers/auth-manager/auth-manager';
 import { DatabaseManagerProvider } from '../../biz/providers/database-manager/database-manager';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage({
   name: 'RegisterPage',
@@ -23,14 +16,14 @@ export class RegisterPage {
   email: string = '';
   password: string = '';
   passwordConfirm: string = '';
+  displayName: string = '';
+  phoneNumber: string = '';
   isSignUp: boolean = false;
 
   constructor(
-    private navCtrl: NavController,
     private alertCtrl: AlertController,
     private loadingCtrl: LoadingController,
-    private auth: AuthManagerProvider,
-    private db: DatabaseManagerProvider
+    private auth: AuthManagerProvider
   ) { }
 
   toggleSiginup() {
@@ -61,13 +54,10 @@ export class RegisterPage {
 
     this.auth.facebookLogin()
       .then(user => {
-        this.saveDatabase(user);
-
-        console.log('성공!', user);
+        console.log(user.toJSON());
         loader.dismiss();
       })
       .catch(err => {
-        console.error('실패!', err);
         loader.dismiss();
         const alert = this.getAlert('실패', err.message);
         alert.present();
@@ -80,8 +70,7 @@ export class RegisterPage {
     loader.present();
 
     this.auth.googleLogin()
-      .then(user => {
-        this.saveDatabase(user);
+      .then(res => {
         loader.dismiss();
       })
       .catch(err => {
@@ -109,8 +98,8 @@ export class RegisterPage {
   }
 
   signup() {
-    if(!this.password || this.password !== this.passwordConfirm) {
-      const alert = this.getAlert('실패', '비밀번호를 확인해주세요.');
+    if(!this.password || this.password !== this.passwordConfirm || !this.phoneNumber || !this.displayName) {
+      const alert = this.getAlert('실패', '입력을 안하신게 있네요.');
       alert.present();
       return;
     }
@@ -118,9 +107,8 @@ export class RegisterPage {
     let loader = this.getLoader('회원가입 중입니다.');
     loader.present();
 
-    this.auth.signUpUser(this.email, this.password)
+    this.auth.signupUser(this.email, this.password, this.displayName, this.phoneNumber)
       .then(user => {
-        this.saveDatabase(user);
         loader.dismiss();
         const alert = this.getAlert('성공', '회원가입에 성공하였습니다.');
         alert.present();
@@ -130,11 +118,6 @@ export class RegisterPage {
         const alert = this.getAlert('실패', err.message);
         alert.present();
       });
-  }
-
-  saveDatabase(user) {
-    let users = this.db.users();
-    users.push(user.toJSON());
   }
 
   getAlert(title: string, message: string) {

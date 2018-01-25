@@ -1,15 +1,18 @@
 export interface User {
+  key: string;
+  uid: string;
   apiKey: string;
   appName: string;
   authDomain: string;
   createdAt: string;
-  dispalyName: string;
+  displayName: string;
   email: string;
   emailVerified: boolean;
   isAnonymous: boolean;
   lastLoginAt: string;
   phoneNumber: string;
   photoURL: string;
+  ownChatIds: string[];
   providerData: any[];
   redirectEventId: string;
   stsTokenManager: {
@@ -18,5 +21,4 @@ export interface User {
     expirationTime: number,
     refreshToken: string
   };
-  uid: string;
 }

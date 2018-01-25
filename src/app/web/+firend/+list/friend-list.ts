@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { User } from '../../../biz/models/user.interface';
-import { Observable } from 'rxjs/Observable';
-import { AuthManagerProvider } from '../../../biz/providers/auth-manager/auth-manager';
 import { DatabaseManagerProvider } from '../../../biz/providers/database-manager/database-manager';
-import { AngularFireList } from 'angularfire2/database';
+import { AuthManagerProvider } from "../../../biz/providers/auth-manager/auth-manager";
+
+import { Observable } from "rxjs/Observable";
+
 
 /**
  * Generated class for the FriendListPage page.
@@ -23,96 +24,23 @@ import { AngularFireList } from 'angularfire2/database';
 })
 export class FriendListPage {
 
-  friends = [
-    {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }, {
-      image: "/assets/img/avatar/momo.jpg",
-      name: "모구리",
-      comment: "열심히 하면 맛있는걸 먹을수 있다.",
-    }];
+  friends$: Observable<User[]>;
+  myUid: string;
 
   constructor(
     private navCtrl: NavController,
-    private navParams: NavParams,
     private auth: AuthManagerProvider,
     private db: DatabaseManagerProvider) {
   }
 
-  ngOnInit () {
+  ionViewDidLoad () {
+    let userInfo = this.auth.getUserInfo() || {};
+    this.myUid = userInfo['uid'];
+
+    this.friends$ = this.db.users().valueChanges();
   }
 
-  viewMessages(chat) {
-    this.navCtrl.push('ChattingRoomPage', { chatId: chat.id });
+  viewMessages(friend: User) {
+    this.navCtrl.push('ProfilePage', { uid: friend.uid });
   }
 }

@@ -1,17 +1,25 @@
 <ion-content class="wrapper" padding>
     <div class="image-wrapper">
-      <!--<img class="logo" src="assets/img/logo/logo-gagaotalk.png" />-->
     </div>
     <div class="form-wrapper">
-      <!--<ion-input class="input" placeholder="010-1234-5678" color="light"></ion-input>-->
+      <ion-input *ngIf="isSignUp" class="input" type="text" placeholder="이름을 입력하세요." color="light" [(ngModel)]="displayName"></ion-input>
+      <ion-input *ngIf="isSignUp" class="input" type="text" placeholder="전화번호를 입력하세요('-'포함)" color="light" [(ngModel)]="phoneNumber"></ion-input>
       <ion-input class="input" type="email" placeholder="이메일을 입력하세요." color="light" [(ngModel)]="email"></ion-input>
       <ion-input class="input" type="password" placeholder="비밀번호를 입력하세요." color="light" [(ngModel)]="password"></ion-input>
       <ion-input *ngIf="isSignUp" class="input" type="password" placeholder="비밀번호를 한번 더 입력하세요." color="light" [(ngModel)]="passwordConfirm"></ion-input>
 
-      <button *ngIf="!isSignUp" ion-button block color="brown" (click)="login()">로그인</button>
-      <button *ngIf="!isSignUp" ion-button block color="facebook" (click)="facebookLogin()">페이스북 로그인</button>
-      <button *ngIf="!isSignUp" ion-button block color="google" (click)="googleLogin()">구글 로그인</button>
-      <button *ngIf="isSignUp" ion-button block color="brown" (click)="signup()">회원가입</button>
+      <button *ngIf="!isSignUp" ion-button block color="brown" (click)="login()" icon-left>
+        <ion-icon name="log-in"></ion-icon>로그인
+      </button>
+      <button *ngIf="!isSignUp" ion-button block color="facebook" (click)="facebookLogin()" icon-left>
+        <ion-icon name="logo-facebook"></ion-icon>로그인
+      </button>
+      <button *ngIf="!isSignUp" ion-button block color="google" (click)="googleLogin()" icon-left>
+        <ion-icon name="logo-googleplus"></ion-icon>로그인
+      </button>
+      <button *ngIf="isSignUp" ion-button block color="brown" (click)="signup()" icon-left>
+        <ion-icon name="mail"></ion-icon>회원가입
+      </button>
 
       <button ion-button block clear (click)="toggleSiginup()">{{isSignUp ? '돌아가기' : '계정이 없으신가요?'}}</button>
 

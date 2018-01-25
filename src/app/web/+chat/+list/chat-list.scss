@@ -1,11 +1,15 @@
-page-chatting-list {
+page-chat-list {
   .unread {
     background: red;
     color: white;
     border-radius: 200px;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 1.1em;
+    font-size: 1.4rem;
+  }
+  .status {
+    font-size: 1.5rem;
+    color: #898989;
   }
   .searchbar-md .searchbar-input {
     background-color: #3D2E34;

@@ -11,19 +11,17 @@
 </ion-header>
 <ion-content>
   <ion-list no-lines>
-    <ion-item *ngFor="let chat of chats">
+    <ion-item *ngFor="let chat of chats$ | async" (click)="viewMessages(chat)">
       <ion-avatar item-start>
-        <img src={{chat.image}}>
       </ion-avatar>
       <h2>
-        {{chat.name}}
-        <ion-icon name="notifications-off"></ion-icon>
-
+        {{chat?.name}}
+        <ion-icon name="notifications-off" class="status"></ion-icon>
       </h2>
-      <p>{{chat.lastText}}</p>
+      <p>{{chat?.messages[chat.messages.length - 1]?.content}}</p>
       <ion-note item-end text-right>
-        <p>2015-12-22</p>
-        <strong class="unread">{{chat.unreadCount}}</strong>
+        <p>{{chat?.messages[chat.messages.length - 1]?.sendTimeAt | moment : 'YYYY-MM-DD'}}</p>
+        <strong class="unread">{{3}}</strong>
       </ion-note>
     </ion-item>
   </ion-list>

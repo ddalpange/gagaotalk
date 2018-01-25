@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ChattingPageModule } from './+chatting/chatting.module';
+import { ChatPageModule } from './+chat/chat.module';
 import { ConfigPageModule } from './+config/config.module';
 import { FriendPageModule } from './+firend/friend.module';
 import { MainNavigationPageModule } from './+main-navigation/main-navigation.module';
@@ -9,7 +9,7 @@ import { RegisterPageModule } from './+register/register.module';
 
 @NgModule({
   imports: [
-    ChattingPageModule,
+    ChatPageModule,
     ConfigPageModule,
     FriendPageModule,
     MainNavigationPageModule,

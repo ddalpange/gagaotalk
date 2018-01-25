@@ -5,16 +5,17 @@ import * as firebase from 'firebase/app';
 
 import 'rxjs/add/operator/map';
 import { User } from 'firebase/app';
+import { DatabaseManagerProvider } from "../database-manager/database-manager";
 
 @Injectable()
 export class AuthManagerProvider {
 
-  private userInfo: User = null;
   private afUser: firebase.User = null;
-  private authState: Observable<firebase.User>
+  private authState: Observable<firebase.User>;
 
   constructor(
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private db: DatabaseManagerProvider
   ) {
     this.initAuth();
   }
@@ -45,7 +46,6 @@ export class AuthManagerProvider {
   }
 
   initUserInfo() {
-    this.userInfo = null;
     this.afUser = null;
   }
 
@@ -58,11 +58,22 @@ export class AuthManagerProvider {
   }
 
   googleLogin() {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((res) => {
+        if (res.additionalUserInfo.isNewUser) {
+          const user = res.user.toJSON();
+          this._saveDatabase(user);
+        }
+      });
   }
 
-  signUpUser(email: string, password: string) {
+  signupUser(email: string, password: string, displayName: string, phoneNumber: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        this._saveDatabase({
+          ...user.toJSON(), displayName: displayName, phoneNumber: phoneNumber
+        });
+      });
   }
 
   resetPassword(email: string) {
@@ -71,6 +82,10 @@ export class AuthManagerProvider {
 
   logoutUser() {
     return this.afAuth.auth.signOut();
+  }
+
+  private _saveDatabase(user) {
+    this.db.users().doc(user.uid).set(user);
   }
 
 }

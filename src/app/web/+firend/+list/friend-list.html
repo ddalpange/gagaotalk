@@ -11,15 +11,27 @@
 </ion-header>
 <ion-content>
   <ion-list no-lines>
-    <ion-list-header no-lines no-margin>나</ion-list-header>
-    <ion-item *ngFor="let friend of friends" (click)="viewMessages(friend)">
+    <ion-list-header no-lines no-margin no-border>나</ion-list-header>
+    <ion-item *ngFor="let friend of friends$ | async | searchFilter: 'uid' : myUid : 'E'" (click)="viewMessages(friend)">
       <ion-avatar item-start>
-        <img src={{friend.image}}>
+        <img [src]="friend?.photoURL || '/assets/img/avatar/momo.jpg'" />
       </ion-avatar>
-      <h2>{{friend.name}}</h2>
-      <p item-end text-right class="bubble-wrapper">
+      <h2>{{friend?.displayName}}</h2>
+      <p *ngIf="friend?.comment" item-end text-right class="bubble-wrapper">
         <span class="bubble me">
-        {{friend.comment}}
+        {{friend?.comment}}
+        </span>
+      </p>
+    </ion-item>
+    <ion-list-header no-lines no-margin no-border>친구들</ion-list-header>
+    <ion-item *ngFor="let friend of friends$ | async | searchFilter: 'uid' : myUid : 'NE'" (click)="viewMessages(friend)">
+      <ion-avatar item-start>
+        <img [src]="friend?.photoURL || '/assets/img/avatar/momo.jpg'" />
+      </ion-avatar>
+      <h2>{{friend?.displayName}}</h2>
+      <p *ngIf="friend?.comment" item-end text-right class="bubble-wrapper">
+        <span class="bubble me">
+        {{friend?.comment}}
         </span>
       </p>
     </ion-item>

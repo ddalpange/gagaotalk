@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from "../../biz/models/user.interface";
+import { DatabaseManagerProvider } from "../../biz/providers/database-manager/database-manager";
+import { Observable } from "rxjs/Observable";
+import { ChatManagerProvider } from "../../biz/providers/chat-manager/chat-manager";
 
 /**
  * Generated class for the ProfilePage page.
@@ -10,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage({
   name: 'ProfilePage',
-  segment: 'profile'
+  segment: 'profile/:uid'
 })
 @Component({
   selector: 'page-profile',
@@ -19,17 +23,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ProfilePage {
 
   following = false;
-  user = {
-    name: '김다현',
-    profileImage: 'https://pbs.twimg.com/profile_images/764496057094971394/oJHa8CAG.jpg',
-    coverImage: 'assets/img/background/background-5.jpg',
-    occupation: 'Singer',
-    location: 'Seoul, Ko',
-    description: '다현이가 짱이야',
-    followers: 456,
-    following: 1052,
-    posts: 35
-  };
+
+  uid: string;
+  user$: Observable<User>;
 
   posts = [
     {
@@ -41,35 +37,23 @@ export class ProfilePage {
       likes: 12,
       comments: 4,
       timestamp: '11h ago'
-    },
-    {
-      postImageUrl: 'assets/img/background/background-3.jpg',
-      text: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
-      date: 'October 23, 2016',
-      likes: 30,
-      comments: 64,
-      timestamp: '30d ago'
-    },
-    {
-      postImageUrl: 'assets/img/background/background-4.jpg',
-      date: 'June 28, 2016',
-      likes: 46,
-      text: `Hope is the thing with feathers that perches in the soul
-             and sings the tune without the words And never stops at all.`,
-      comments: 66,
-      timestamp: '4mo ago'
-    },
+    }
   ];
 
-  constructor(private navCtrl: NavController) { }
+  constructor(
+    private navCtrl: NavController,
+    private navParams: NavParams,
+    private db: DatabaseManagerProvider,
+    private chat: ChatManagerProvider
+  ) { }
 
   ionViewDidLoad() {
-    console.log('Hello ProfileFour Page');
+    this.uid = this.navParams.get('uid');
+    this.user$ = this.db.users().doc<User>(this.uid).valueChanges();
   }
 
-  follow() {
-    this.following = !this.following;
-    // this.toastCtrl.create('Follow user clicked');
+  gonnaChatRoom() {
+    this.chat.createChat([this.uid]);
   }
 
   imageTapped(post) {
