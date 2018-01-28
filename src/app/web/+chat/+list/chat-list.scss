@@ -1,4 +1,9 @@
 page-chat-list {
+  .chat-photo {
+    background-image: url("https://lh6.googleusercontent.com/-iWAvmXvYN6c/AAAAAAAAAAI/AAAAAAAAAtk/fRNUmme7zqc/photo.jpg"), url("https://lh6.googleusercontent.com/-iWAvmXvYN6c/AAAAAAAAAAI/AAAAAAAAAtk/fRNUmme7zqc/photo.jpg");
+    background-size: 19px;
+    background-position: left, right;
+  }
   .unread {
     background: red;
     color: white;
@@ -6,13 +11,15 @@ page-chat-list {
     padding-left: 5px;
     padding-right: 5px;
     font-size: 1.4rem;
+    margin-top: 3px;
+    display: inline-block;
   }
   .status {
     font-size: 1.5rem;
     color: #898989;
   }
   .searchbar-md .searchbar-input {
-    background-color: #3D2E34;
+    background-color: #41362F;
     border-radius: 25px;
     color: white;
     &:focus {

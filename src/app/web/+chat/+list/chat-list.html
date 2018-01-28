@@ -12,7 +12,7 @@
 <ion-content>
   <ion-list no-lines>
     <ion-item *ngFor="let chat of chats$ | async" (click)="viewMessages(chat)">
-      <ion-avatar item-start>
+      <ion-avatar item-start class="chat-photo">
       </ion-avatar>
       <h2>
         {{chat?.name}}
@@ -20,8 +20,12 @@
       </h2>
       <p>{{chat?.messages[chat.messages.length - 1]?.content}}</p>
       <ion-note item-end text-right>
-        <p>{{chat?.messages[chat.messages.length - 1]?.sendTimeAt | moment : 'YYYY-MM-DD'}}</p>
-        <strong class="unread">{{3}}</strong>
+        <p>
+          {{chat?.messages[chat.messages.length - 1]?.sendTimeAt | moment : 'YYYY-MM-DD'}}<br/>
+        </p>
+        <p class="unread">
+          3
+        </p>
       </ion-note>
     </ion-item>
   </ion-list>

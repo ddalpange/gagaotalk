@@ -1,3 +1,5 @@
 page-main-navigation {
-
+  .tabs-md .tab-button[aria-selected=true] {
+    border-bottom: 1px solid #4A3E36;
+  }
 }

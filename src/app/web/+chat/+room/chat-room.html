@@ -1,36 +1,36 @@
-<ion-header color="light-blue">
+<ion-header>
 	<ion-navbar color="light-blue">
 		<ion-title>@x@</ion-title>
     <ion-buttons end>
       <button ion-button icon-only>
         <ion-icon name="search" margin></ion-icon>
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="menu" margin-right></ion-icon>
       </button>
     </ion-buttons>
 	</ion-navbar>
 </ion-header>
 <ion-content padding class="chats" #content>
-  <!--<ng-template ngFor let-chat [ngForOf]="chats">-->
-    <!--<div class="chat me" *ngIf="isMe(chat.userId)">-->
-      <!--<div class="content">-->
-        <!--<div class="message">{{chat.text}}</div>-->
-      <!--</div>-->
-      <!--<div class="time">오후 8:25</div>-->
-    <!--</div>-->
-    <!--<div class="chat you" *ngIf="!isMe(chat.userId)">-->
-      <!--<img src="{{getUser(chat.userId).image}}" class="profile-image" (click)="viewProfile()"/>-->
-      <!--<div class="content">-->
-        <!--<div class="name">{{getUser(chat.userId).name}}</div>-->
-        <!--<div class="message">{{chat.text}}</div>-->
-      <!--</div>-->
-      <!--<div class="time">오후 8:25</div>-->
-    <!--</div>-->
-  <!--</ng-template>-->
+  <ng-template ngFor let-message [ngForOf]="messages">
+    <div class="chat me" *ngIf="isMe(message.userId)">
+      <div class="content">
+        <div class="message">{{message.content}}</div>
+      </div>
+      <div class="time">오후 8:25</div>
+    </div>
+    <div class="chat you" *ngIf="!isMe(message.userId)">
+      <img src="{{getUser(message.userId).photoURL}}" class="profile-image" (click)="viewProfile()"/>
+      <div class="content">
+        <div class="name">{{getUser(message.userId).name}}</div>
+        <div class="message">{{message.content}}</div>
+      </div>
+      <div class="time">오후 8:25</div>
+    </div>
+  </ng-template>
 </ion-content>
 <ion-footer>
-		<ion-item>
-      <button ion-button clear (click)="send(chatBox)" item-start><ion-icon name="add-circle"></ion-icon></button>
-      <ion-input [(ngModel)]="chatBox"></ion-input>
-			<button ion-button clear (click)="send(chatBox)" item-end><ion-icon name="send"></ion-icon></button>
-		</ion-item>
+  <ion-item no-lines>
+    <button ion-button icon-only item-start clear color="grey"><ion-icon name="add-circle"></ion-icon></button>
+    <ion-input #input></ion-input>
+    <button ion-button (click)="send(input.value)" icon-only item-end clear [color]="input.value.length === 0 ? 'grey' : 'dark'"><ion-icon name="send"></ion-icon></button>
+  </ion-item>
 </ion-footer>

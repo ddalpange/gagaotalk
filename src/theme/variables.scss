@@ -40,27 +40,53 @@ $colors: (
   dark:       #222,
   google:     #db3236,
   facebook:   #3b5998,
-  brown:    #3D2E34,
-  light-brown: lighten(#3D2E34, 10%),
+  brown:    #41362F,
+  light-brown: #4A3E36,
   grey: #DFDFDF,
   yello: #DEC804,
   light-yello: #F7E600,
-  light-blue: #AFC0D0
+  light-blue: #B8C7D8,
+  light-blue2: #B6C5D7,
 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-$tabs-ios-tab-color-active: #3D2E34;
-
+$tabs-ios-tab-color-active: #4A3E36;
+$tabs-ios-tab-color-inactive: #D4D3D3;
+$tabs-ios-tab-icon-size: 2.5rem;
+$tabs-ios-tab-min-height: 48px;
+$tabs-ios-background: #F9F8F8;
+$list-ios-header-min-height: 2rem;
+$list-ios-header-font-size: 1.2rem;
+$label-ios-margin-bottom: 0;
+$label-ios-margin-top: 0;
+$toolbar-ios-title-text-color: black;
+$toolbar-ios-text-color: black;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-$tabs-md-tab-color-active: #3D2E34;
+$tabs-md-tab-color-active: #4A3E36;
+$tabs-md-tab-color-inactive: #D4D3D3;
+$tabs-md-tab-icon-size: 2.5rem;
+$tabs-md-tab-min-height: 48px;
+$tabs-md-background: #F9F8F8;
+$list-md-header-min-height: 2rem;
+$list-md-header-font-size: 1.2rem;
+$label-md-margin-bottom: 0;
+$label-md-margin-top: 0;
+$searchbar-md-input-box-shadow:0;
+$toolbar-md-title-text-color: black;
+$toolbar-md-text-color: black;
+$text-input-md-highlight-color-invalid: transparent;
+$text-input-md-highlight-color-valid: transparent;
+$text-input-md-show-invalid-highlight: transparent;
+$text-input-md-highlight-color: transparent;
+$text-input-md-show-valid-highlight: transparent;
 
 // App Windows Variables
 // --------------------------------------------------

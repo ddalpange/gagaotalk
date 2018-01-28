@@ -1,14 +1,16 @@
 
 page-chat-room {
-  .content {
-    background-color: #AFC0D0;
+  .tab-button[aria-selected=true] {
+    border-bottom: 1px solid #4A3E36
   }
-  .toolbar-md {
-    color: #141414;
+
+  .toolbar-md-light-blue .bar-button-clear-md, .toolbar-md-light-blue .bar-button-default-md, .toolbar-md-light-blue .bar-button-outline-md, .toolbar-md-light-blue .toolbar-title-md {
+    color: black !important;
   }
   .chats {
     display: flex;
     flex-direction: column;
+    background: #B6C5D7;
     .chat {
       display: flex;
       margin-bottom: 3px;
