@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar color="light-brown">
+    <ion-searchbar color="brown" placeholder="검색" padding-left></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="settings">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content hide-ion-fab>
+  <ion-list no-lines>
+    <ion-list-header no-lines no-margin no-border>내 프로필</ion-list-header>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <ion-list-header no-lines no-margin no-border>내 친구</ion-list-header>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+    <friend-list-item (openProfile)="openProfile(friend)"></friend-list-item>
+  </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="yello"><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+      <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

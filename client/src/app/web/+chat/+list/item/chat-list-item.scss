@@ -1,0 +1,21 @@
+chat-list-item {
+  .date {
+    height: 19px;
+    font-size: 1.2rem;
+    color: #777777;
+  }
+  .unread {
+    background: red;
+    color: white;
+    border-radius: 200px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 1.4rem;
+    display: inline-block;
+  }
+
+  .status {
+    font-size: 1.5rem;
+    color: #898989;
+  }
+}

@@ -3,77 +3,63 @@
     <ion-title>설정</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content color="brown">
   <ion-list>
-    <ion-list-header>
-      Settings
-    </ion-list-header>
-    <button ion-item (click)="signout()">
-      <ion-icon name="log-out" item-start color="primary"></ion-icon>
+    <ion-item (click)="signout()">
+      <ion-icon name="log-out" item-start color="brown"></ion-icon>
       <ion-label>로그아웃</ion-label>
-    </button>
-
-    <ion-item>
-      <ion-icon name="plane" item-start color="danger"></ion-icon>
-      <ion-label>Airplane Mode</ion-label>
-      <ion-toggle color="secondary"></ion-toggle>
-    </ion-item>
-    <button ion-item>
-      <ion-icon name="wifi" item-start color="primary"></ion-icon>
-      <ion-label>Wi-Fi</ion-label>
-      <ion-note item-end>The Interwebz</ion-note>
-    </button>
-    <button ion-item>
-      <ion-icon name="bluetooth" item-start color="primary"></ion-icon>
-      <ion-label>Bluetooth</ion-label>
-      <ion-note item-end>Off</ion-note>
-    </button>
-    <button ion-item>
-      <ion-icon name="call" item-start color="secondary"></ion-icon>
-      <ion-label>Cellular</ion-label>
-    </button>
-    <button ion-item>
-      <ion-icon name="link" item-start color="secondary"></ion-icon>
-      <ion-label>Personal Hotspot</ion-label>
-      <ion-note item-end>Off</ion-note>
-    </button>
-  </ion-list>
-  <ion-list radio-group>
-    <ion-list-header>
-      Silence Phone
-    </ion-list-header>
-    <ion-item>
-      <ion-label color="dark">Always</ion-label>
-      <ion-radio value="always" checked></ion-radio>
     </ion-item>
     <ion-item>
-      <ion-label color="dark">Only while phone is locked</ion-label>
-      <ion-radio value="locked"></ion-radio>
+      <ion-icon name="megaphone" item-start color="brown"></ion-icon>
+      <ion-label>공지사항</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="beaker" item-start color="brown"></ion-icon>
+      <ion-label>실험실</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="alert" item-start color="brown"></ion-icon>
+      <ion-label>버전정보</ion-label>
     </ion-item>
   </ion-list>
   <ion-list>
-    <ion-list-header>
-      Apps Installed
-    </ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-start color="primary"></ion-icon>
-      <ion-label>Ionic View</ion-label>
-      <button ion-button outline item-end>Uninstall</button>
+      <ion-icon name="lock" item-start color="brown"></ion-icon>
+      <ion-label>개인/보안</ion-label>
     </ion-item>
     <ion-item>
-      <ion-icon name="brush" item-start color="primary"></ion-icon>
-      <ion-label>Ionic Creator</ion-label>
-      <button ion-button outline item-end>Uninstall</button>
+      <ion-icon name="notifications" item-start color="brown"></ion-icon>
+      <ion-label>알림</ion-label>
     </ion-item>
     <ion-item>
-      <ion-icon name="logo-octocat" item-start color="dark"></ion-icon>
-      <ion-label>Hubstruck</ion-label>
-      <button ion-button outline item-end>Uninstall</button>
+      <ion-icon name="person" item-start color="brown"></ion-icon>
+      <ion-label>친구</ion-label>
     </ion-item>
     <ion-item>
-      <ion-icon name="paw" item-start color="danger"></ion-icon>
-      <ion-label>Barkpark</ion-label>
-      <button ion-button outline item-end>Uninstall</button>
+      <ion-icon name="chatbubbles" item-start color="brown"></ion-icon>
+      <ion-label>채팅</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="color-fill" item-start color="brown"></ion-icon>
+      <ion-label>화면</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="color-palette" item-start color="brown"></ion-icon>
+      <ion-label>테마</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="star" item-start color="brown"></ion-icon>
+      <ion-label>게임별</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="more" item-start color="brown"></ion-icon>
+      <ion-label>기타</ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="information-circle" item-start color="brown"></ion-icon>
+      <ion-label>고객센터</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

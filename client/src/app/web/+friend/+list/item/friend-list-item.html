@@ -1,0 +1,11 @@
+<ion-item (click)="clickItem(friend)">
+    <ion-avatar item-start>
+        <img [src]="friend?.photoURL || defaultPhotoURL" />
+    </ion-avatar>
+    <h2>{{friend?.displayName || '홍낄똥'}}</h2>
+    <div item-end>
+        <p text-right class="bubble" padding-vertical>
+            안녕
+        </p>
+    </div>
+</ion-item>

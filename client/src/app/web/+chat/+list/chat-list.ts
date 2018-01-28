@@ -15,10 +15,6 @@ import { AuthManagerProvider } from "../../../biz/providers/auth-manager/auth-ma
 })
 export class ChatListPage {
 
-  myUid: string;
-  chats$: Observable<Chat[]>;
-
-
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
@@ -28,13 +24,10 @@ export class ChatListPage {
   }
 
   ionViewDidLoad() {
-    this.myUid = this.auth.getUserInfo() ? this.auth.getUserInfo().uid : null;
-    this.chats$ = this.db.chats().valueChanges().map(chats => chats.filter(chat => {
-      return chat.ownUids.indexOf(this.myUid) > -1
-    }));
   }
 
-  viewMessages(chat) {
-    this.navCtrl.push('ChatRoomPage', { id: chat.id });
-  }
+  gonnaChat() {
+  	this.navCtrl.push('ChatRoomPage');
+	}
+
 }

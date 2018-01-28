@@ -16,9 +16,9 @@ import { WebPageModule } from './web/web.module';
 import { PipesModule } from './biz/pipes/pipes.module';
 import { ProvidersModule } from './biz/providers/providers.module';
 import { AngularFirestoreModule } from "angularfire2/firestore";
+import { DirectivesModule } from "./biz/directives/directives.module";
 
-
-export const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDbtHRdtprI1td-OMwx_9isoKen5fojclE",
   authDomain: "gagaotalk-707cd.firebaseapp.com",
   databaseURL: "https://gagaotalk-707cd.firebaseio.com",
@@ -34,7 +34,6 @@ export const firebaseConfig = {
     HttpModule,
     FormsModule,
     IonicModule.forRoot(MyApp, {
-      // backButtonText: '',
       tabsHideOnSubPages: true
     }),
     AngularFireModule.initializeApp(firebaseConfig),
@@ -43,7 +42,8 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     WebPageModule,
     PipesModule,
-    ProvidersModule
+    ProvidersModule,
+		DirectivesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [MyApp],

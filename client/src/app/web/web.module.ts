@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ChatPageModule } from './+chat/chat.module';
 import { ConfigPageModule } from './+config/config.module';
-import { FriendPageModule } from './+firend/friend.module';
+import { FriendPageModule } from './+friend/friend.module';
 import { MainNavigationPageModule } from './+main-navigation/main-navigation.module';
 import { MemoPageModule } from './+memo/memo.module';
 import { ProfilePageModule } from './+profile/profile.module';
