@@ -1,45 +1,32 @@
-import { Directive, ElementRef, Renderer } from '@angular/core';
-import { Content } from "ionic-angular";
+import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
-/**
- * Generated class for the HideIonFabDirective directive.
- *
- * See https://angular.io/api/core/Directive for more info on Angular
- * Directives.
- */
 @Directive({
   selector: '[hide-ion-fab]', // Attribute selector
 	host: {
-		'(ionScroll)': 'handleScroll($event)'
+		'(ionScroll)': 'onContentScroll($event)'
 	}
 })
 export class HideIonFabDirective {
-	private fabRef;
-	private storedScroll: number = 0;
-	private threshold: number = 10;
+	fabToHide: HTMLElement;
+	oldScrollTop: number = 0;
 
-	constructor(
-		public element:ElementRef,
-		public renderer:Renderer) {
+	constructor(private renderer: Renderer2, private element: ElementRef) {
 	}
 
-	ngAfterViewInit() {
-		this.fabRef = this.element.nativeElement.getElementsByClassName("fab")[0];
-		this.renderer.setElementStyle(this.fabRef, 'webkitTransition', 'transform 500ms,top 500ms');
+	ngAfterViewInit(){
+		this.fabToHide = this.element.nativeElement.getElementsByClassName("fab")[0];
+		this.renderer.setStyle(this.fabToHide, 'webkitTransition', 'transform 500ms, opacity 500ms');
 	}
 
-	handleScroll(event: Content) {
-		console.log(event);
-
-		if (event.scrollTop - this.storedScroll > this.threshold) {
-			this.renderer.setElementStyle(this.fabRef, 'top', '60px');
-			this.renderer.setElementStyle(this.fabRef, 'webkitTransform', 'scale3d(.1,.1,.1)');
-		} else if (event.scrollTop - this.storedScroll < 0) {
-			this.renderer.setElementStyle(this.fabRef, 'top', '0');
-			this.renderer.setElementStyle(this.fabRef, 'webkitTransform', 'scale3d(1,1,1)');
+	onContentScroll(e){
+		if(e.scrollTop - this.oldScrollTop > 10){
+			this.renderer.setStyle(this.fabToHide, 'opacity', '0');
+			this.renderer.setStyle(this.fabToHide, 'webkitTransform', 'scale3d(.1,.1,.1)');
+		} else if(e.scrollTop - this.oldScrollTop < 0){
+			this.renderer.setStyle(this.fabToHide, 'opacity', '1');
+			this.renderer.setStyle(this.fabToHide, 'webkitTransform', 'scale3d(1,1,1)');
 		}
-		// console.log(event.scrollTop - this.storedScroll);
-		this.storedScroll = event.scrollTop;
-	}
 
+		this.oldScrollTop = e.scrollTop;
+	}
 }

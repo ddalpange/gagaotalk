@@ -19,7 +19,7 @@ export class MainNavigationPage {
 
   friendListRoot = 'FriendListPage';
   chatListRoot = 'ChatListPage';
-  memoListRoot = 'MemoListPage';
+  FeedRoot = 'FeedPage';
   configRoot = 'ConfigPage';
 
   isAndroid: boolean = false;

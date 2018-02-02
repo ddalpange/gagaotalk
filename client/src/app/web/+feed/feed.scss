@@ -1,0 +1,11 @@
+page-feed {
+  .searchbar-md .searchbar-input {
+    background-color: #41362F;
+    border-radius: 25px;
+    color: white;
+    &:focus {
+      background-color: white;
+      color: #141414;
+    }
+  }
+}

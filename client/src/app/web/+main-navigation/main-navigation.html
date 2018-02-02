@@ -1,6 +1,6 @@
-<ion-tabs tabsPlacement="{{isAndroid ? 'top' : 'bottom'}}" no-border="">
-    <ion-tab [root]="friendListRoot" tabTitle="{{!isAndroid ? '친구' : null}}" tabUrlPath="0" tabIcon="person"></ion-tab>
-    <ion-tab [root]="chatListRoot" tabTitle="{{!isAndroid ? '채팅' : null}}" tabUrlPath="1" tabIcon="text"></ion-tab>
-    <ion-tab [root]="memoListRoot" tabTitle="{{!isAndroid ? '채널' : null}}" tabUrlPath="2" tabIcon="paper"></ion-tab>
-    <ion-tab [root]="configRoot" tabTitle="{{!isAndroid ? '더보기' : null}}" tabUrlPath="3" tabIcon="more"></ion-tab>
+<ion-tabs no-border>
+    <ion-tab [root]="friendListRoot" tabTitle="친구" tabUrlPath="0" tabIcon="person"></ion-tab>
+    <ion-tab [root]="chatListRoot" tabTitle="채팅" tabUrlPath="1" tabIcon="text"></ion-tab>
+    <ion-tab [root]="FeedRoot" tabTitle="뉴스" tabUrlPath="2" tabIcon="paper" tabBadge="n" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="configRoot" tabTitle="더보기" tabUrlPath="3" tabIcon="more"></ion-tab>
 </ion-tabs>

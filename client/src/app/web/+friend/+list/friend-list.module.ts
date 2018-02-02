@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { FriendListPage } from './friend-list';
 import { PipesModule } from "../../../biz/pipes/pipes.module";
 import { FriendListItemComponent } from './item/friend-list-item';
+import { DirectivesModule } from "../../../biz/directives/directives.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { FriendListItemComponent } from './item/friend-list-item';
   ],
   imports: [
     IonicPageModule.forChild(FriendListPage),
-    PipesModule
+    PipesModule,
+		DirectivesModule
   ],
   exports: [
     FriendListPage
