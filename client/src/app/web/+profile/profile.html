@@ -1,72 +1,36 @@
-<ion-content padding class="transparent-header">
-  <ion-header>
-    <ion-navbar>
-    </ion-navbar>
-  </ion-header>
-  <div id="profile-bg" [ngStyle]="{'background-image': 'url(' +  'assets/img/background/background-5.jpg' +')'}"></div>
-  <div id="content">
-    <div id="profile-info" padding>
-      <img id="profile-image" [src]="(user$ | async)?.photoURL || '/assets/img/avatar/momo.jpg'">
-      <h3 id="profile-name">{{(user$ | async)?.displayName}}</h3>
-      <p class="profile-description">{{(user$ | async)?.email}}</p>
-      <button ion-button icon-only round (click)="gonnaChatRoom()">
-        <ion-icon name="chatbubbles"></ion-icon>
-      </button>
-      <button ion-button icon-only round>
-        <ion-icon name="call"></ion-icon>
-      </button>
-
-      <!--<button ion-button *ngIf="!following" small color="purple" (click)="follow()">Follow</button>-->
-      <!--<button ion-button *ngIf="following" class="follow-button" small color="purple" (click)="follow()">Following<ion-icon name="checkmark"></ion-icon></button>-->
-    </div>
-    <hr/>
-    <ion-row class="profile-numbers">
-      <ion-col col-4>
-        <p>Followers</p>
-        <span>{{123}}</span>
-      </ion-col>
-      <ion-col col-4>
-        <p>Following</p>
-        <span>{{123}}</span>
-      </ion-col>
-      <ion-col col-4>
-        <p>Posts</p>
-        <span>{{123}}</span>
-      </ion-col>
-    </ion-row>
-    <div id="posts">
-      <ion-card *ngFor="let post of posts">
-        <ion-item>
-          <ion-avatar item-start>
-            <img [src]="(user$ | async)?.photoURL">
-          </ion-avatar>
-          <h2 class="sticky">{{(user$ | async)?.displayName}}</h2>
-          <p>{{post.date}}</p>
-        </ion-item>
-        <img [src]="post.postImageUrl" (click)="imageTapped(post)">
-        <ion-card-content>
-          <p>{{post.text}}</p>
-        </ion-card-content>
-        <ion-row>
-          <ion-col col-4>
-            <button ion-button color="purple" clear small icon-left (click)="like(post)">
-                <ion-icon name='thumbs-up'></ion-icon>
-                {{post.likes}} Likes
-              </button>
-          </ion-col>
-          <ion-col col-5>
-            <button ion-button no-padding color="purple" clear small icon-left (click)="comment(post)">
-                <ion-icon name='text'></ion-icon>
-                {{post.comments}} Comments
-              </button>
-          </ion-col>
-          <ion-col col-3 align-self-center text-center>
-            <p>
-              {{post.timestamp}}
-            </p>
-          </ion-col>
-        </ion-row>
-      </ion-card>
+<ion-header no-border>
+  <ion-navbar transparent>
+    테스트
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="profile-background">
+    <div class="profile-comment">엑윽엑윽익</div>
+    <div class="profile-photo"></div>
+  </div>
+  <div class="profile-description">
+    <h2 class="profile-name">홍길동</h2>
+    <p class="profile-email">test@test.com</p>
+    <p class="profile-phone">010-1234-5678</p>
+    <div class="profile-buttons">
+      <div class="profile-button">
+        <button ion-button icon-only round color="brown">
+          <ion-icon name="chatbubbles"></ion-icon>
+        </button>
+        <p>1:1 채팅</p>
+      </div>
+      <div class="profile-button">
+        <button ion-button icon-only round color="brown">
+          <ion-icon name="md-create"></ion-icon>
+        </button>
+        <p>프로필 관리</p>
+      </div>
+      <div class="profile-button">
+        <button ion-button icon-only round color="brown">
+          <ion-icon name="quote"></ion-icon>
+        </button>
+        <p>가가오스토리</p>
+      </div>
     </div>
   </div>
 </ion-content>

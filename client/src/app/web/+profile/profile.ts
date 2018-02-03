@@ -22,38 +22,18 @@ import { ChatManagerProvider } from "../../biz/providers/chat-manager/chat-manag
 })
 export class ProfilePage {
 
-  following = false;
-
-  uid: string;
-  user$: Observable<User>;
-
-  posts = [
-    {
-      postImageUrl: 'assets/img/background/background-2.jpg',
-      text: `I believe in being strong when everything seems to be going wrong.
-             I believe that happy girls are the prettiest girls.
-             I believe that tomorrow is another day and I believe in miracles.`,
-      date: 'November 5, 2016',
-      likes: 12,
-      comments: 4,
-      timestamp: '11h ago'
-    }
-  ];
+	defaultPhotoURL: string = "/assets/img/avatar/default-person.png";
+	defaultBackgroundURL: string = "/assets/img/background/background-6.jpg";
 
   constructor(
     private navCtrl: NavController,
     private navParams: NavParams,
-    private db: DatabaseManagerProvider,
-    private chat: ChatManagerProvider
   ) { }
 
   ionViewDidLoad() {
-    this.uid = this.navParams.get('uid');
-    this.user$ = this.db.users().doc<User>(this.uid).valueChanges();
   }
 
   gonnaChatRoom() {
-    this.chat.createChat([this.uid]);
   }
 
   imageTapped(post) {
