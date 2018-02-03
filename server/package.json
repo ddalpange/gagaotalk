@@ -36,11 +36,18 @@
     "webpack-stream": "^3.2.0"
   },
   "dependencies": {
+    "@types/amqplib": "^0.5.6",
     "@types/async": "^2.0.47",
     "@types/koa": "^2.0.43",
+    "@types/koa-bodyparser": "^4.2.0",
+    "@types/koa-passport": "^4.0.1",
     "@types/koa-router": "^7.0.27",
-    "@types/amqplib": "^0.5.6",
+    "@types/koa-session": "^5.7.0",
+    "@types/passport-facebook": "^2.1.7",
+    "@types/passport-local": "^1.0.32",
     "@types/pg": "^7.4.1",
+    "@types/socket.io": "^1.4.31",
+    "passport-google-auth": "^1.0.2",
     "tslint-config-airbnb": "^5.5.0"
   }
 }
